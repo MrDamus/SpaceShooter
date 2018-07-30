@@ -1,23 +1,21 @@
-const radius = 15;
-
 class Player {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.canvas = document.getElementById("myCanvas");
+    this.canvas = document.getElementById("canvas");
   }
 
   draw() {
-    var ctx = c.getContext("2d");
+    var ctx = canvas.getContext("2d");
     ctx.beginPath();
-    ctx.arc(this.x, this.y, radius, 0, 2 * Math.PI);
-    ctx.stroke();
+    ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
+    ctx.fill();
   }
 
   move(moveConfig) {
-    const { isX, isY, speedX, speedY } = moveConfig;
-    this.x = this.x + (isX ? speedX : 0);
-    this.y = this.y + (isY ? speedY : 0);
+    const { x, y } = moveConfig;
+    this.x = x;
+    this.y = y;
   }
 }
 

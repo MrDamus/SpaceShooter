@@ -2,6 +2,12 @@ var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
     canvas.style.backgroundColor='lightblue';
 
+const player = new Player(0,0)
+const bullets = [];
+
+const shoot = (bullet) => {
+    bullets.push(bullet)
+}
 
 var width = 360,
     height = 400,
@@ -10,34 +16,39 @@ var width = 360,
     radius = 10,
     velY = 0,
     velX = 0,
-    speed = 3,
+    speed = 3.4,
     friction = 0.94,
     keys = [];
 
 function update() {
-    requestAnimationFrame(update);
-    
-    if (keys[38]) {
+    ctx.clearRect(0, 0, width, height);
+
+    if (keys[38] || keys[87]) {
         if (velY > -speed) {
             velY--;
         }
     }
-    
-    if (keys[40]) {
+    if (keys[40] || keys[83]) {
         if (velY < speed) {
             velY++;
         }
     }
-    if (keys[39]) {
+    if (keys[39] || keys[68]) {
         if (velX < speed) {
             velX++;
         }
     }
-    if (keys[37]) {
+    if (keys[37] || keys[65]) {
         if (velX > -speed) {
             velX--;
         }
     }
+    if (keys[32]) { 
+      // SPACE: shoot
+      const bullet = new Bullet(player.x, player.y)
+      
+      shoot(bullet)
+  }
 
     velY *= friction;
     y += velY;
@@ -56,13 +67,18 @@ function update() {
         y = radius;
     }
 
-    ctx.clearRect(0, 0, width, height);
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2);
-    ctx.fill();
+    player.move({ x, y })
+    player.draw()
+
+    bullets.forEach(bullet => {
+        bullet.draw();
+    });
+
+    requestAnimationFrame(update);
 }
 
-update();
+requestAnimationFrame(update);
+// update();
 
 document.body.addEventListener("keydown", function (e) {
     keys[e.keyCode] = true;
