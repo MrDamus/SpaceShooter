@@ -11,7 +11,6 @@ class Bullet {
   }
 
   draw() {
-    console.log(this.y);
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
     ctx.arc(this.x, this.y, bulletRadius, 0, 2 * Math.PI);
