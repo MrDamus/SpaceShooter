@@ -1,4 +1,4 @@
-const radius = 40;
+const radius = 15;
 
 class Player {
   constructor(x, y) {
@@ -14,13 +14,35 @@ class Player {
     ctx.stroke();
   }
 
-  move(move) {
-    const { direction, speed } = move;
-    this.x = this.x + (direction === 'x' ? speed : 0);
-    this.y = this.y + (direction === 'y' ? speed : 0);
-    console.log(this.x, this.y, direction, speed)
-    console.log(direction === 'x', direction === 'y')
-
-    this.draw();
+  move(moveConfig) {
+    const { isX, isY, speedX, speedY } = moveConfig;
+    this.x = this.x + (isX ? speedX : 0);
+    this.y = this.y + (isY ? speedY : 0);
   }
 }
+
+const modifier = 10.25;
+class Movement {
+  constructor(isX, isY) {
+    this.isX = isX;
+    this.isY = isY;
+    this.speedX = 0;
+    this.speedY = 0;
+  }
+  setX(value) {
+    this.isX =  value
+  }
+  setY(value) {
+    this.isY =  value
+  }
+  setSpeedX(value) {
+    this.speedX = value * Math.abs((this.speedX ? (this.speedX/modifier) : 1))
+    console.log(value, this.speedX);
+  }
+  setSpeedY(value) {
+    this.speedY = value * Math.abs((this.speedY ? (this.speedY/modifier) : 1))
+    console.log(value, this.speedY);
+  }
+}
+
+const movement = new Movement(false,false);
