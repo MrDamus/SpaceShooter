@@ -1,49 +1,72 @@
-const speed = 10;
-const movementMap = (keyCode, keyUp = false) => {
-  if (keyCode === 38 /* up */ || keyCode === 87 /* w */){
-    movement.setY(keyUp)
-    movement.setSpeedY(keyUp ? -speed : 0)
-  }
-  if (keyCode === 40 /* down */ || keyCode === 83 /* s */){
-    movement.setY(keyUp)
-    movement.setSpeedY(keyUp ? speed : 0)
-  }
-  if (keyCode === 37 /* left */  || keyCode === 65 /* a */ ) {
-    movement.setX(keyUp)
-    movement.setSpeedX(keyUp ? -speed : 0)
-  }
-  if (keyCode === 39 /* right */ || keyCode === 68 /* d */){
-    movement.setX(keyUp)
-    movement.setSpeedX(keyUp ? speed : 0)
-  }
-  return { ...movement }
+var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d");
+    canvas.style.backgroundColor='lightblue';
+
+
+var width = 360,
+    height = 400,
+    x = width/2,
+    y = height/2,
+    radius = 10,
+    velY = 0,
+    velX = 0,
+    speed = 3,
+    friction = 0.94,
+    keys = [];
+
+function update() {
+    requestAnimationFrame(update);
+    
+    if (keys[38]) {
+        if (velY > -speed) {
+            velY--;
+        }
+    }
+    
+    if (keys[40]) {
+        if (velY < speed) {
+            velY++;
+        }
+    }
+    if (keys[39]) {
+        if (velX < speed) {
+            velX++;
+        }
+    }
+    if (keys[37]) {
+        if (velX > -speed) {
+            velX--;
+        }
+    }
+
+    velY *= friction;
+    y += velY;
+    velX *= friction;
+    x += velX;
+
+    if (x >= width-radius) {
+        x = width-radius;
+    } else if (x <= radius) {
+        x = radius;
+    }
+
+    if (y > height-radius) {
+        y = height-radius;
+    } else if (y <= radius) {
+        y = radius;
+    }
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.fill();
 }
 
-var c = document.getElementById("myCanvas");
-c.style.backgroundColor='lightblue';
-const p = new Player(95,50)
-const clearCanvas = () => {
-  context = c.getContext('2d');
-  context.clearRect(0, 0, c.width, c.height);
-}
+update();
 
-
-(function loop(){
-  p.draw();
-  requestAnimationFrame(loop);
-})();
-
-const onKeyDownPress = (e) => {
-  const move = movementMap(e.keyCode, true);
-  clearCanvas();
-  p.move(move);
-}
-
-const onKeyUpPress = (e) => {
-  const move = movementMap(e.keyCode);
-  clearCanvas();
-  p.move(move);
-}
-
-document.addEventListener('keydown',onKeyDownPress)
-document.addEventListener('keyup',onKeyUpPress)
+document.body.addEventListener("keydown", function (e) {
+    keys[e.keyCode] = true;
+});
+document.body.addEventListener("keyup", function (e) {
+    keys[e.keyCode] = false;
+});
