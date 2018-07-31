@@ -1,26 +1,46 @@
-const radius = 40;
-
 class Player {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.canvas = document.getElementById("myCanvas");
+    this.canvas = document.getElementById("canvas");
   }
 
   draw() {
-    var ctx = c.getContext("2d");
+    var ctx = canvas.getContext("2d");
     ctx.beginPath();
-    ctx.arc(this.x, this.y, radius, 0, 2 * Math.PI);
-    ctx.stroke();
+    ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
+    ctx.fill();
   }
 
-  move(move) {
-    const { direction, speed } = move;
-    this.x = this.x + (direction === 'x' ? speed : 0);
-    this.y = this.y + (direction === 'y' ? speed : 0);
-    console.log(this.x, this.y, direction, speed)
-    console.log(direction === 'x', direction === 'y')
-
-    this.draw();
+  move(moveConfig) {
+    const { x, y } = moveConfig;
+    this.x = x;
+    this.y = y;
   }
 }
+
+const modifier = 10.25;
+class Movement {
+  constructor(isX, isY) {
+    this.isX = isX;
+    this.isY = isY;
+    this.speedX = 0;
+    this.speedY = 0;
+  }
+  setX(value) {
+    this.isX =  value
+  }
+  setY(value) {
+    this.isY =  value
+  }
+  setSpeedX(value) {
+    this.speedX = value * Math.abs((this.speedX ? (this.speedX/modifier) : 1))
+    console.log(value, this.speedX);
+  }
+  setSpeedY(value) {
+    this.speedY = value * Math.abs((this.speedY ? (this.speedY/modifier) : 1))
+    console.log(value, this.speedY);
+  }
+}
+
+const movement = new Movement(false,false);

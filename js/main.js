@@ -1,34 +1,91 @@
-const speed = 1;
-const movementMap = (keyCode) => {
-  if (keyCode === 38 /* up */ || keyCode === 87 /* w */){
-    return { direction : 'y', speed: -speed}
-  }
-  if (keyCode === 39 /* right */ || keyCode === 68 /* d */){
-    return { direction : 'x', speed}
-  }
-  if (keyCode === 40 /* down */ || keyCode === 83 /* s */){
-    return { direction : 'y', speed}
-  }
-  if (keyCode === 37 /* left */  || keyCode === 65 /* a */ ) {
-    return { direction : 'x', speed: -speed}
-  }
+const player = new Player(0,0)
+let bullets = [];
+let enemies = [];
+
+const enemy = new Enemy(180,40)
+
+
+const shoot = (bullet) => {
+    bullets.push(bullet)
 }
 
+function throttle(delay, fn) {
+    let lastCall = 0;
+    return (...args) => {
+      const now = (new Date).getTime();
+      if (now - lastCall < delay) {
+        return;
+      }
+      lastCall = now;
+      return fn(...args);
+    }
+  }
 
-var c = document.getElementById("myCanvas");
-c.style.backgroundColor='lightblue';
-const p = new Player(95,50)
-p.draw();
+const shootThrottled = throttle(200, shoot);
 
-const clearCanvas = () => {
-  context = c.getContext('2d');
-  context.clearRect(0, 0, c.width, c.height);
+function update() {
+    ctx.clearRect(0, 0, width, height);
+
+    if (keys[38] || keys[87]) {
+        if (velY > -speed) {
+            velY--;
+        }
+    }
+    if (keys[40] || keys[83]) {
+        if (velY < speed) {
+            velY++;
+        }
+    }
+    if (keys[39] || keys[68]) {
+        if (velX < speed) {
+            velX++;
+        }
+    }
+    if (keys[37] || keys[65]) {
+        if (velX > -speed) {
+            velX--;
+        }
+    }
+
+    if (keys[32]) { 
+      const bullet = new Bullet(player.x, player.y);
+      shootThrottled(bullet)
+    }
+
+    velY *= friction;
+    y += velY;
+    velX *= friction;
+    x += velX;
+
+    if (x >= width-radius) {
+        x = width-radius;
+    } else if (x <= radius) {
+        x = radius;
+    }
+
+    if (y > height-radius) {
+        y = height-radius;
+    } else if (y <= radius) {
+        y = radius;
+    }
+
+    player.move({ x, y })
+    player.draw()
+    enemy.draw()
+    bullets = bullets.filter(bullet => bullet.y >= -10)
+    bullets.forEach(bullet => {
+        bullet.draw();
+        }
+    )
+
+    requestAnimationFrame(update);
 }
 
+requestAnimationFrame(update);
 
-const onPress = (e) => {
-  const move = movementMap(e.keyCode);
-  clearCanvas();
-  p.move(move);
-}
-document.addEventListener('keydown',onPress)
+document.body.addEventListener("keydown", function (e) {
+    keys[e.keyCode] = true;
+});
+document.body.addEventListener("keyup", function (e) {
+    keys[e.keyCode] = false;
+});
