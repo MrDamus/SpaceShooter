@@ -9,7 +9,12 @@ class Player {
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
     ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
+    ctx.shadowColor = '#000';
+    ctx.shadowBlur = 20;
+    ctx.shadowOffsetX = 15;
+    ctx.shadowOffsetY = 15;
     ctx.fill();
+    ctx.closePath();
   }
 
   move(moveConfig) {
@@ -20,27 +25,3 @@ class Player {
 }
 
 const modifier = 10.25;
-class Movement {
-  constructor(isX, isY) {
-    this.isX = isX;
-    this.isY = isY;
-    this.speedX = 0;
-    this.speedY = 0;
-  }
-  setX(value) {
-    this.isX =  value
-  }
-  setY(value) {
-    this.isY =  value
-  }
-  setSpeedX(value) {
-    this.speedX = value * Math.abs((this.speedX ? (this.speedX/modifier) : 1))
-    console.log(value, this.speedX);
-  }
-  setSpeedY(value) {
-    this.speedY = value * Math.abs((this.speedY ? (this.speedY/modifier) : 1))
-    console.log(value, this.speedY);
-  }
-}
-
-const movement = new Movement(false,false);

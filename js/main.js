@@ -1,83 +1,63 @@
-const player = new Player(0,0)
-let bullets = [];
-let enemies = [];
-
-const enemy = new Enemy(180,40)
-
+const player = new Player(0, 0)
 
 const shoot = (bullet) => {
     bullets.push(bullet)
 }
 
-function throttle(delay, fn) {
-    let lastCall = 0;
-    return (...args) => {
-      const now = (new Date).getTime();
-      if (now - lastCall < delay) {
-        return;
-      }
-      lastCall = now;
-      return fn(...args);
-    }
-  }
+const spawnEnemy = (enemy) => {
+    enemies.push(enemy)
+}
+
+const addEnemies = () => {
+    // ¯\_(ツ)_/¯
+    // TODO: function spawn enemies
+    const enemy = new Enemy(width/2, 40, 3, 10)
+    spawnEnemy(enemy);
+}
+addEnemies()
 
 const shootThrottled = throttle(200, shoot);
 
 function update() {
     ctx.clearRect(0, 0, width, height);
 
-    if (keys[38] || keys[87]) {
-        if (velY > -speed) {
-            velY--;
-        }
-    }
-    if (keys[40] || keys[83]) {
-        if (velY < speed) {
-            velY++;
-        }
-    }
-    if (keys[39] || keys[68]) {
-        if (velX < speed) {
-            velX++;
-        }
-    }
-    if (keys[37] || keys[65]) {
-        if (velX > -speed) {
-            velX--;
-        }
-    }
+    handleKeysPressed();
 
-    if (keys[32]) { 
-      const bullet = new Bullet(player.x, player.y);
-      shootThrottled(bullet)
-    }
-
-    velY *= friction;
-    y += velY;
-    velX *= friction;
-    x += velX;
-
-    if (x >= width-radius) {
-        x = width-radius;
-    } else if (x <= radius) {
-        x = radius;
-    }
-
-    if (y > height-radius) {
-        y = height-radius;
-    } else if (y <= radius) {
-        y = radius;
-    }
-
+    applyForces();
     player.move({ x, y })
     player.draw()
-    enemy.draw()
+
+    // TODO: kill enemy and bullet on contact
+
     bullets = bullets.filter(bullet => bullet.y >= -10)
     bullets.forEach(bullet => {
         bullet.draw();
+        enemies.forEach(enemy => {
+            const { x, y, radius } = enemy
+            const leftBorder = x - radius
+            const rightBorder = x + radius
+            const topBorder = y - radius
+            const bottomBorder = y + radius;
+            const isInHitArea = bullet.y >= topBorder &&
+                                bullet.y <= bottomBorder &&
+                                bullet.x >= leftBorder &&
+                                bullet.x <= rightBorder
+
+            // TODO: COLLISION FOR players and enemy
+
+            if(isInHitArea) {
+                addEnemies();
+                enemy.applyDamage(gunDamage);
+                bullets = bullets.filter(b => b != bullet)
+            }
+        })
         }
     )
 
+    enemies.forEach(enemy => {
+        enemy.move({ x: enemy.x, y: enemy.y });
+        enemy.draw();
+    })
     requestAnimationFrame(update);
 }
 

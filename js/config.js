@@ -1,6 +1,7 @@
 const canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
     canvas.style.backgroundColor='lightblue';
+    
     width = 360,
     height = 400,
     speed = 3.4,
@@ -12,3 +13,6 @@ let x = width/2,
     velY = 0,
     velX = 0,
     keys = [];
+    bullets = [];
+    enemies = [];
+    gunDamage = 1;
