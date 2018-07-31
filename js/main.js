@@ -1,5 +1,9 @@
 const player = new Player(0,0)
 let bullets = [];
+let enemies = [];
+
+const enemy = new Enemy(180,40)
+
 
 const shoot = (bullet) => {
     bullets.push(bullet)
@@ -67,6 +71,7 @@ function update() {
 
     player.move({ x, y })
     player.draw()
+    enemy.draw()
     bullets = bullets.filter(bullet => bullet.y >= -10)
     bullets.forEach(bullet => {
         bullet.draw();

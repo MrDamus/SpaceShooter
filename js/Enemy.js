@@ -1,18 +1,20 @@
+const enemyRadius = 20;
+
 class Enemy {
-  constructor(x, y, radius) {
-    this.x = width/2;
-    this.y = 50;
-    this.radius = radius;
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
     this.canvas = document.getElementById("canvas");
   }
 
   draw() {
-    var ctx = c.getContext("2d");
-    enemy = new Enemy(100, 100, radius)
+    var ctx = canvas.getContext("2d");
 
     ctx.beginPath();
-    ctx.arc(this.x, this.y, radius, 0, 2 * Math.PI);
-    ctx.fill(255);
+    ctx.arc(this.x, this.y, enemyRadius, 0, 2 * Math.PI);
+    // ctx.fill();
+    ctx.stroke();
+
   }
 
 }
