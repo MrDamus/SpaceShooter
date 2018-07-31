@@ -1,20 +1,31 @@
-const enemyRadius = 20;
-
 class Enemy {
-  constructor(x, y) {
+  constructor(x, y, hp, radius) {
     this.x = x;
     this.y = y;
-    this.canvas = document.getElementById("canvas");
+    this.hp = hp;
+    this.radius = radius
   }
 
   draw() {
     var ctx = canvas.getContext("2d");
-
     ctx.beginPath();
-    ctx.arc(this.x, this.y, enemyRadius, 0, 2 * Math.PI);
+    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     // ctx.fill();
+    ctx.shadowColor = '#FFF';
     ctx.stroke();
-
+    ctx.closePath();
   }
 
+  applyDamage(damage) {
+    this.hp -= damage;
+    if(this.hp <= 0) {
+      enemies = enemies.filter(e => e != this)
+    }
+  }
+
+  move(moveConfig) {
+    const { x, y } = moveConfig;
+    this.x = x - (getRandomArbitrary(-5 ,5));
+    this.y = y + (getRandomArbitrary(0,2));
+  }
 }
