@@ -1,6 +1,6 @@
 const canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
-    canvas.style.backgroundColor='lightblue';
+    canvas.style.backgroundColor='black';
     
     width = 360,
     height = 400,

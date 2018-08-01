@@ -1,4 +1,4 @@
-const player = new Player(0, 0)
+// const player = new Player(0, 0)
 
 const shoot = (bullet) => {
     bullets.push(bullet)
