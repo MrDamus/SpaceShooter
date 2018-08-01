@@ -1,7 +1,7 @@
 // Set the number of stars to draw
-var stars=[];
-var numStars=10;
-var speed=10;
+let stars=[];
+let numStars=100;
+let starSpeed=-5;
 
 // Reset a star
 function makeStar() {
@@ -9,7 +9,7 @@ function makeStar() {
 		x: Math.random(),
 		y: Math.random(),
 		distance: Math.sqrt(Math.random()),
-		color: 'hsl('+Math.random()*40+',100%,'+(70+Math.random()*30)+'%)'
+		color: 'hsl('+Math.random()*40+',100%,'+(85+Math.random()*30)+'%)'
 	};
 }
 
@@ -20,17 +20,22 @@ for (i=0;i<numStars;i++) {
 
 // Draw stars
 function updateStars() {
+
 	// Clear canvas
-	ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  
 	// Draw each star
 	for (i=0;i<numStars;i++) {
+  
 		// Move the star first
-		stars[i].x-=Math.pow(stars[i].distance,2)/canvas.width*speed;
+    stars[i].y-=Math.pow(stars[i].distance,2)/canvas.width*starSpeed;
+    
 		// If it's off-screen, reset it
-		if (stars[i].x<=0) {
+		if (stars[i].y>1) {
 			stars[i]=makeStar();
-			stars[i].x=1;
-		}
+			stars[i].y=0;
+    }
+    
 		// Draw the star
 		ctx.beginPath();
 		ctx.arc(stars[i].x*canvas.width,stars[i].y*canvas.height,stars[i].distance*2,0,2*Math.PI,false);
@@ -45,5 +50,5 @@ function updateStars() {
 
 // Redraw the stars every 30 milliseconds
 setInterval(function(){
-	updateStars();
+  updateStars();
 },30);
