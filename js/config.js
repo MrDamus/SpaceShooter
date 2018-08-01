@@ -1,10 +1,10 @@
 const canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
-    canvas.style.backgroundColor='black';
+    canvas.style.backgroundColor='#2F2E2E';
     
     width = 360,
     height = 400,
-    speed = 3.4,
+    speed = 2.4,
     friction = 0.94,
     radius = 10
 
@@ -16,3 +16,4 @@ let x = width/2,
     bullets = [];
     enemies = [];
     gunDamage = 1;
+    enemyDamage = 1;

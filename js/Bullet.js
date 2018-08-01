@@ -15,6 +15,7 @@ class Bullet {
     ctx.beginPath();
     ctx.arc(this.x, this.y, bulletRadius, 0, 2 * Math.PI);
     ctx.stroke();
+    ctx.fill();
     ctx.closePath();
   }
 }

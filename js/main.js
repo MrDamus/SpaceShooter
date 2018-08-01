@@ -1,11 +1,13 @@
-// const player = new Player(0, 0)
+const player = new Player(0, 0, 10, 30)
 
 const shoot = (bullet) => {
     bullets.push(bullet)
 }
 
 const spawnEnemy = (enemy) => {
-    enemies.push(enemy)
+    setInterval(() => {
+        enemies.push(enemy)
+      }, 500)
 }
 
 const addEnemies = () => {
@@ -27,6 +29,7 @@ function update() {
     player.move({ x, y })
     player.draw()
 
+    updateStars();
     // TODO: kill enemy and bullet on contact
 
     bullets = bullets.filter(bullet => bullet.y >= -10)
@@ -46,7 +49,6 @@ function update() {
             // TODO: COLLISION FOR players and enemy
 
             if(isInHitArea) {
-                addEnemies();
                 enemy.applyDamage(gunDamage);
                 bullets = bullets.filter(b => b != bullet)
             }
@@ -55,6 +57,24 @@ function update() {
     )
 
     enemies.forEach(enemy => {
+        const { x, y, radius } = enemy
+        const leftBorder = x - radius
+        const rightBorder = x + radius
+        const topBorder = y - radius
+        const bottomBorder = y + radius;
+
+        const isInPlayerArea =  player.y >= topBorder &&
+                                player.y <= bottomBorder &&
+                                player.x >= leftBorder &&
+                                player.x <= rightBorder
+                                
+        if(isInPlayerArea) {
+            player.applyDamage(enemyDamage);
+            enemies = enemies.filter(e => e != enemy)
+            console.log(player.hp, radius)
+        }
+                    
+
         enemy.move({ x: enemy.x, y: enemy.y });
         enemy.draw();
     })

@@ -22,7 +22,7 @@ for (i=0;i<numStars;i++) {
 function updateStars() {
 
 	// Clear canvas
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  // ctx.clearRect(0,0,canvas.width,canvas.height);
   
 	// Draw each star
 	for (i=0;i<numStars;i++) {
@@ -38,17 +38,14 @@ function updateStars() {
     
 		// Draw the star
 		ctx.beginPath();
+		ctx.save();
 		ctx.arc(stars[i].x*canvas.width,stars[i].y*canvas.height,stars[i].distance*2,0,2*Math.PI,false);
 		ctx.lineWidth=stars[i].distance*4;
 		ctx.strokeStyle='rgba(255,255,255,0.2)';
 		ctx.stroke();
 		ctx.fillStyle=stars[i].color;
-    ctx.fill();
+		ctx.fill();
+		ctx.restore();
     ctx.closePath();
 	}
 }
-
-// Redraw the stars every 30 milliseconds
-setInterval(function(){
-  updateStars();
-},30);

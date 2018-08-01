@@ -9,10 +9,12 @@ class Enemy {
   draw() {
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
+    ctx.save();
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     // ctx.fill();
     ctx.shadowColor = '#FFF';
     ctx.stroke();
+    ctx.restore();
     ctx.closePath();
   }
 
@@ -25,7 +27,7 @@ class Enemy {
 
   move(moveConfig) {
     const { x, y } = moveConfig;
-    this.x = x - (getRandomArbitrary(-5 ,5));
-    this.y = y + (getRandomArbitrary(0,2));
+    this.x = x ;
+    this.y = y ;
   }
 }
