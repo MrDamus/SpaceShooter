@@ -21,9 +21,6 @@ for (i=0;i<numStars;i++) {
 // Draw stars
 function updateStars() {
 
-	// Clear canvas
-  // ctx.clearRect(0,0,canvas.width,canvas.height);
-  
 	// Draw each star
 	for (i=0;i<numStars;i++) {
   

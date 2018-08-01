@@ -5,16 +5,18 @@ const shoot = (bullet) => {
 }
 
 const spawnEnemy = (enemy) => {
-    setInterval(() => {
-        enemies.push(enemy)
-      }, 500)
+    enemies.push(enemy)
 }
 
 const addEnemies = () => {
     // ¯\_(ツ)_/¯
     // TODO: function spawn enemies
-    const enemy = new Enemy(width/2, 40, 3, 10)
-    spawnEnemy(enemy);
+    setInterval(() => {
+        let x = width/2 + getRandomArbitrary(-150,150)
+        let y = 0
+        const enemy = new Enemy(x, y, 3, 10)
+        spawnEnemy(enemy);
+    }, 500)
 }
 addEnemies()
 

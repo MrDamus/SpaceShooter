@@ -27,7 +27,7 @@ class Enemy {
 
   move(moveConfig) {
     const { x, y } = moveConfig;
-    this.x = x ;
-    this.y = y ;
+    this.x = x + Math.random();
+    this.y = y + Math.random();
   }
 }
