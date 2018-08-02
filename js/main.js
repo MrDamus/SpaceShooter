@@ -9,7 +9,6 @@ const spawnEnemy = (enemy) => {
 }
 
 const addEnemies = () => {
-    // ¯\_(ツ)_/¯
     setInterval(() => {
         let x = width/2 + getRandomArbitrary(-150,150)
         let y = 0
@@ -29,7 +28,6 @@ function update() {
     applyForces();
     player.move({ x, y })
     player.draw()
-    // player.drawTriangle();
 
     updateStars();
 
@@ -67,14 +65,26 @@ function update() {
                                 player.y <= bottomBorder + player.radius &&
                                 player.x >= leftBorder - player.radius &&
                                 player.x <= rightBorder + player.radius
-
                                 
         if(isInPlayerArea) {
             player.applyDamage(enemyDamage);
             enemies = enemies.filter(e => e != enemy)
-            console.log(player.hp, radius)
         }
-                    
+
+        const leftDeadLine = -50;
+        const rightDeadLine = 450;
+        const topDeadLine = -100;
+        const bottomDeadLine = 410;
+
+        const isOutOfGame = leftBorder <= leftDeadLine ||
+                            rightBorder >= rightDeadLine ||
+                            topBorder <= topDeadLine ||
+                            bottomBorder >= bottomDeadLine
+                                
+        if (isOutOfGame) {
+            console.log('enemy is ouf of game')
+            enemies = enemies.filter(e => e != enemy)
+        }
 
         enemy.move({ x: enemy.x, y: enemy.y });
         enemy.draw();

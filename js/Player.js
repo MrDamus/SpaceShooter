@@ -9,19 +9,6 @@ class Player {
 
   draw() {
     let ctx = canvas.getContext("2d");
-    // ------[Circle]---------
-    // ctx.beginPath();
-    // ctx.save();
-    // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    // ctx.shadowColor = '#000';
-    // ctx.shadowBlur = 20;
-    // ctx.shadowOffsetX = 15;
-    // ctx.shadowOffsetY = 15;
-    // ctx.fillStyle = 'green';
-    // ctx.fill();
-		//  ctx.restore();
-    // ctx.closePath();
-
     // ------[Triangle]---------
     const triangleWidth = 15;
     const triangleHeight = 15;
