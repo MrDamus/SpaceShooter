@@ -1,7 +1,7 @@
 class Bullet {
-  constructor(x, y, radius = 2) {
+  constructor(x, y, radius = 2, direction = -20,) {
     this.x = x;
-    this.y = y - 20;
+    this.y = y + direction;
     this.radius = radius
     this.interval = setInterval(() => {
       this.y -= 10
