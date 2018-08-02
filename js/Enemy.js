@@ -4,6 +4,9 @@ class Enemy {
     this.y = y;
     this.hp = hp;
     this.radius = radius
+    this.interval = setInterval(() => {
+      // spawn bullet 
+    }, 2000)
   }
 
   draw() {
@@ -11,9 +14,10 @@ class Enemy {
     ctx.beginPath();
     ctx.save();
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    // ctx.fill();
     ctx.shadowColor = '#FFF';
     ctx.stroke();
+    ctx.fillStyle = 'red';
+    ctx.fill();
     ctx.restore();
     ctx.closePath();
   }
@@ -27,7 +31,7 @@ class Enemy {
 
   move(moveConfig) {
     const { x, y } = moveConfig;
-    this.x = x + Math.random();
-    this.y = y + Math.random();
+    this.x = x + getRandomArbitrary(-1,1);
+    this.y = y + getRandomArbitrary(-1,2);
   }
 }

@@ -1,7 +1,5 @@
-const playerRadius = 5;
-
 class Player {
-  constructor(x, y, hp, radius) {
+  constructor(x, y, radius, hp) {
     this.x = x;
     this.y = y;
     this.hp = hp;
@@ -10,16 +8,31 @@ class Player {
   }
 
   draw() {
-    var ctx = canvas.getContext("2d");
+    let ctx = canvas.getContext("2d");
+    // ------[Circle]---------
+    // ctx.beginPath();
+    // ctx.save();
+    // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    // ctx.shadowColor = '#000';
+    // ctx.shadowBlur = 20;
+    // ctx.shadowOffsetX = 15;
+    // ctx.shadowOffsetY = 15;
+    // ctx.fillStyle = 'green';
+    // ctx.fill();
+		//  ctx.restore();
+    // ctx.closePath();
+
+    // ------[Triangle]---------
+    const triangleWidth = 15;
+    const triangleHeight = 15;
     ctx.beginPath();
     ctx.save();
-    ctx.arc(this.x, this.y, playerRadius, 0, Math.PI * 2);
-    ctx.shadowColor = '#000';
-    ctx.shadowBlur = 20;
-    ctx.shadowOffsetX = 15;
-    ctx.shadowOffsetY = 15;
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(this.x + triangleWidth / 2, this.y + triangleHeight);
+    ctx.lineTo(this.x - triangleWidth / 2, this.y + triangleHeight);
+    ctx.fillStyle = 'green';
     ctx.fill();
-		ctx.restore();
+    ctx.restore();
     ctx.closePath();
   }
 

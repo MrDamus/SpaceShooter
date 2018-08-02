@@ -1,4 +1,4 @@
-const player = new Player(0, 0, 10, 30)
+const player = new Player(0, 0, 5, 30)
 
 const shoot = (bullet) => {
     bullets.push(bullet)
@@ -10,7 +10,6 @@ const spawnEnemy = (enemy) => {
 
 const addEnemies = () => {
     // ¯\_(ツ)_/¯
-    // TODO: function spawn enemies
     setInterval(() => {
         let x = width/2 + getRandomArbitrary(-150,150)
         let y = 0
@@ -30,9 +29,9 @@ function update() {
     applyForces();
     player.move({ x, y })
     player.draw()
+    // player.drawTriangle();
 
     updateStars();
-    // TODO: kill enemy and bullet on contact
 
     bullets = bullets.filter(bullet => bullet.y >= -10)
     bullets.forEach(bullet => {
@@ -47,7 +46,6 @@ function update() {
                                 bullet.y <= bottomBorder &&
                                 bullet.x >= leftBorder &&
                                 bullet.x <= rightBorder
-
             // TODO: COLLISION FOR players and enemy
 
             if(isInHitArea) {
@@ -65,10 +63,11 @@ function update() {
         const topBorder = y - radius
         const bottomBorder = y + radius;
 
-        const isInPlayerArea =  player.y >= topBorder &&
-                                player.y <= bottomBorder &&
-                                player.x >= leftBorder &&
-                                player.x <= rightBorder
+        const isInPlayerArea =  player.y >= topBorder - player.radius &&
+                                player.y <= bottomBorder + player.radius &&
+                                player.x >= leftBorder - player.radius &&
+                                player.x <= rightBorder + player.radius
+
                                 
         if(isInPlayerArea) {
             player.applyDamage(enemyDamage);
