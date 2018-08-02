@@ -22,7 +22,7 @@ function update() {
 
     updateStars();
 
-    bullets = bullets.filter(bullet => bullet.y >= -10)
+    bullets = bullets.filter(bullet => (bullet.y <= 410 && bullet.y >= -10))
     bullets.forEach(bullet => {
         bullet.draw();
         enemies.forEach(enemy => {
@@ -73,7 +73,6 @@ function update() {
                             bottomBorder >= bottomDeadLine
                                 
         if (isOutOfGame) {
-            console.log('enemy is ouf of game')
             enemies = enemies.filter(e => e != enemy)
         }
 
