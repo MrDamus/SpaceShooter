@@ -6,7 +6,7 @@ const addEnemies = () => {
         let y = 0
         const enemy = new Enemy(x, y, 3, 10)
         spawnEnemy(enemy);
-    }, 500)
+    }, 3000)
 }
 
 addEnemies()
@@ -22,7 +22,7 @@ function update() {
 
     updateStars();
 
-    bullets = bullets.filter(bullet => (bullet.y <= 410 && bullet.y >= -10))
+    bullets = bullets.filter(bullet => (bullet.y <= 405 && bullet.y >= -10))
     bullets.forEach(bullet => {
         bullet.draw();
         enemies.forEach(enemy => {
@@ -73,9 +73,9 @@ function update() {
                             bottomBorder >= bottomDeadLine
                                 
         if (isOutOfGame) {
+            enemy.remove();
             enemies = enemies.filter(e => e != enemy)
         }
-
         enemy.move({ x: enemy.x, y: enemy.y });
         enemy.draw();
     })

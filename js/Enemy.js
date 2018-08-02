@@ -5,8 +5,9 @@ class Enemy {
     this.hp = hp;
     this.radius = radius
     this.interval = setInterval(() => {
+      console.log('spawning bullet')
       this.spawnNewBullet();
-    }, 2000)
+    }, 3000)
   }
 
   draw() {
@@ -25,6 +26,7 @@ class Enemy {
   applyDamage(damage) {
     this.hp -= damage;
     if(this.hp <= 0) {
+      this.remove();
       enemies = enemies.filter(e => e != this)
     }
   }
@@ -38,5 +40,10 @@ class Enemy {
     const { x, y } = moveConfig;
     this.x = x + getRandomArbitrary(-1,1);
     this.y = y + getRandomArbitrary(-1,2);
+  }
+
+  remove() {
+    console.warn('removed');
+    clearInterval(this.interval);
   }
 }
