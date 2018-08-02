@@ -5,8 +5,7 @@ class Enemy {
     this.hp = hp;
     this.radius = radius
     this.interval = setInterval(() => {
-      //spawn bullet
-      // this.spawnBullet(bullet);
+      this.spawnNewBullet();
     }, 2000)
   }
 
@@ -30,8 +29,9 @@ class Enemy {
     }
   }
 
-  spawnBullet(bullet){
-    const bullet = new Bullet(this.x, this.y, 1, 10)
+  spawnNewBullet(){
+    const bullet = new Bullet(this.x, this.y, 1, 20, -10)
+    shoot(bullet);
   }
 
   move(moveConfig) {

@@ -1,10 +1,10 @@
 class Bullet {
-  constructor(x, y, radius = 2, direction = -20,) {
+  constructor(x, y, radius = 2, offset = -20, direction= 10) {
     this.x = x;
-    this.y = y + direction;
+    this.y = y + offset;
     this.radius = radius
     this.interval = setInterval(() => {
-      this.y -= 10
+      this.y -= direction
     }, 50)
 }
 
