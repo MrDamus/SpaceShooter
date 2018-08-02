@@ -1,3 +1,14 @@
+const shoot = (bullet) => {
+    bullets.push(bullet)
+}
+
+const spawnEnemy = (enemy) => {
+    enemies.push(enemy)
+}
+
+const shootThrottled = throttle(200, shoot);
+
+
 const handleKeysPressed = () => {
     if (keys[38] || keys[87]) {
         if (velY > -speed) {

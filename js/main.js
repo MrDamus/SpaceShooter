@@ -1,13 +1,5 @@
 const player = new Player(0, 0, 5, 30)
 
-const shoot = (bullet) => {
-    bullets.push(bullet)
-}
-
-const spawnEnemy = (enemy) => {
-    enemies.push(enemy)
-}
-
 const addEnemies = () => {
     setInterval(() => {
         let x = width/2 + getRandomArbitrary(-150,150)
@@ -16,9 +8,8 @@ const addEnemies = () => {
         spawnEnemy(enemy);
     }, 500)
 }
-addEnemies()
 
-const shootThrottled = throttle(200, shoot);
+addEnemies()
 
 function update() {
     ctx.clearRect(0, 0, width, height);
