@@ -5,13 +5,11 @@ class Enemy {
     this.hp = hp;
     this.radius = radius
     this.interval = setInterval(() => {
-      console.log('spawning bullet')
       this.spawnNewBullet();
     }, 3000)
   }
 
   draw() {
-    var ctx = canvas.getContext("2d");
     ctx.beginPath();
     ctx.save();
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
@@ -23,7 +21,7 @@ class Enemy {
     ctx.closePath();
   }
 
-  applyDamage(damage) {
+  applyDamage (damage) {
     this.hp -= damage;
     if(this.hp <= 0) {
       this.remove();
@@ -43,7 +41,6 @@ class Enemy {
   }
 
   remove() {
-    console.warn('removed');
     clearInterval(this.interval);
   }
 }

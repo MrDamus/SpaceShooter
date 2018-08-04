@@ -9,7 +9,9 @@ const addEnemies = () => {
     }, 3000)
 }
 
-addEnemies()
+function start() {
+    addEnemies();
+} 
 
 function update() {
     ctx.clearRect(0, 0, width, height);
@@ -19,7 +21,7 @@ function update() {
     applyForces();
     player.move({ x, y })
     player.draw()
-
+    renderUI();
     updateStars();
 
     bullets = bullets.filter(bullet => (bullet.y <= 405 && bullet.y >= -10))
@@ -59,7 +61,7 @@ function update() {
                                 
         if(isInPlayerArea) {
             player.applyDamage(enemyDamage);
-            enemies = enemies.filter(e => e != enemy)
+            enemy.applyDamage(enemy.hp);
         }
 
         const leftDeadLine = -50;
@@ -67,14 +69,13 @@ function update() {
         const topDeadLine = -100;
         const bottomDeadLine = 410;
 
-        const isOutOfGame = leftBorder <= leftDeadLine ||
+        const enemyOutOfCanvas = leftBorder <= leftDeadLine ||
                             rightBorder >= rightDeadLine ||
                             topBorder <= topDeadLine ||
                             bottomBorder >= bottomDeadLine
                                 
-        if (isOutOfGame) {
-            enemy.remove();
-            enemies = enemies.filter(e => e != enemy)
+        if (enemyOutOfCanvas) {
+            enemy.applyDamage(enemy.hp);
         }
         enemy.move({ x: enemy.x, y: enemy.y });
         enemy.draw();
@@ -82,6 +83,7 @@ function update() {
     requestAnimationFrame(update);
 }
 
+start();
 requestAnimationFrame(update);
 
 document.body.addEventListener("keydown", function (e) {
@@ -90,3 +92,4 @@ document.body.addEventListener("keydown", function (e) {
 document.body.addEventListener("keyup", function (e) {
     keys[e.keyCode] = false;
 });
+
