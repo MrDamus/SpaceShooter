@@ -1,9 +1,11 @@
 const addEnemies = () => {
     setInterval(() => {
-        let x = width/2 + getRandomArbitrary(-150,150)
-        let y = 0
-        const enemy = new Enemy(x, y, 3, 10)
-        spawnEnemy(enemy);
+        if(!window.document.hidden){
+            let x = width/2 + getRandomArbitrary(-150,150)
+            let y = 0
+            const enemy = new Enemy(x, y, 3, 10)
+            spawnEnemy(enemy);
+        }
     }, 3000)
 }
 
@@ -12,7 +14,10 @@ function start() {
 } 
 
 start();
-requestAnimationFrame(update);
+
+if(!window.document.hidden){
+    requestAnimationFrame(update);
+}
 
 document.body.addEventListener("keydown", function (e) {
     keys[e.keyCode] = true;

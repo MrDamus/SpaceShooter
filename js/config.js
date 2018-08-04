@@ -20,3 +20,7 @@ let x = width/2,
     enemies = [];
     gunDamage = 1;
     enemyDamage = 1;
+
+const SOUNDS = {
+    pew: document.getElementById('sound_pew'),
+}

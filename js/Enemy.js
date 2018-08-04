@@ -6,7 +6,7 @@ class Enemy {
     this.radius = radius
     this.interval = setInterval(() => {
       this.spawnNewBullet();
-    }, 3000)
+    }, 1277)
   }
 
   draw() {

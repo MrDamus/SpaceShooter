@@ -1,5 +1,8 @@
 const shoot = (bullet) => {
-    bullets.push(bullet)
+    if(!window.document.hidden){
+        bullets.push(bullet)
+        // SOUNDS.pew.play();
+    }
 }
 
 const spawnEnemy = (enemy) => {
