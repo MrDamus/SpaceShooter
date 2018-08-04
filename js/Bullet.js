@@ -9,7 +9,6 @@ class Bullet {
 }
 
   draw() {
-    const ctx = canvas.getContext("2d");
     ctx.beginPath();
     ctx.arc(this.x, this.y+20, this.radius, 0, 2 * Math.PI);
     ctx.stroke();

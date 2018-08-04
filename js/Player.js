@@ -8,7 +8,6 @@ class Player {
   }
 
   draw() {
-    let ctx = canvas.getContext("2d");
     // ------[Triangle]---------
     const triangleWidth = 15;
     const triangleHeight = 15;

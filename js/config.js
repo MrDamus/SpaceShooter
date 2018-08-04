@@ -1,5 +1,7 @@
-const canvas = document.getElementById("canvas"),
-    ctx = canvas.getContext("2d");
+const FONT_NAME = 'kong';
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
     // canvas.style.backgroundColor='#2F2E2E';
     canvas.style.backgroundColor='lightblue';
     
