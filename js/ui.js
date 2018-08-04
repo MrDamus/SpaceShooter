@@ -6,12 +6,6 @@ const renderPlayerHP = () => {
   const showHp = 'Player'
 }
 
-function renderText() {
-    ctx.font = `18px "${FONT_NAME}"`;
-    ctx.textAlign = 'right';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('Waka Waka', 150, 50);
-}
 
 renderUI = () => {
   renderPlayerHP();

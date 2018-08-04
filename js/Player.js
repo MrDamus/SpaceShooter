@@ -36,4 +36,5 @@ class Player {
   }
 }
 
-const modifier = 10.25;
+const player = new Player(0, 0, 5, 30)
+
