@@ -1,9 +1,10 @@
 class Enemy {
-  constructor(x, y, hp, radius) {
+  constructor(x, y, hp, radius, bullet = BULLETS.DEFAULT_ENEMY) {
     this.x = x;
     this.y = y;
     this.hp = hp;
-    this.radius = radius
+    this.bullet = bullet
+    this.radius = radius;
     this.interval = setInterval(() => {
       this.spawnNewBullet();
     }, 1277)
@@ -30,8 +31,9 @@ class Enemy {
   }
 
   spawnNewBullet(){
-    const bullet = new Bullet(this.x, this.y, 1, 20, -10)
-    shoot(bullet);
+    const { x, y, bullet } = this;
+    const newBullet = new Bullet({ x, y, owner: this, ...bullet})
+    shoot(newBullet);
   }
 
   move(moveConfig) {

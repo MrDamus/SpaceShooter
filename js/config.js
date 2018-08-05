@@ -24,3 +24,10 @@ let x = width/2,
 const SOUNDS = {
     pew: document.getElementById('sound_pew'),
 }
+
+let player;
+
+const BULLETS = {
+    DEFAULT_ENEMY: { radius: 1, offset:20, direction:-10}
+    // DEFAULT_PLAYER: {} rozne rysowania, rozne funkcje
+}
