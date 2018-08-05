@@ -1,15 +1,33 @@
 class Player {
-  constructor(x, y) {
+  constructor(x, y, radius, hp, bullet = BULLETS.DEFAULT_PLAYER) {
     this.x = x;
     this.y = y;
+    this.hp = hp;
+    this.bullet = bullet
+    this.radius = radius;
     this.canvas = document.getElementById("canvas");
   }
 
   draw() {
-    var ctx = canvas.getContext("2d");
+    // ------[Triangle]---------
+    const triangleWidth = 15;
+    const triangleHeight = 15;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
+    ctx.save();
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(this.x + triangleWidth / 2, this.y + triangleHeight);
+    ctx.lineTo(this.x - triangleWidth / 2, this.y + triangleHeight);
+    ctx.fillStyle = 'green';
     ctx.fill();
+    ctx.restore();
+    ctx.closePath();
+  }
+
+  applyDamage(damage) {
+    this.hp -= damage;
+    if(this.hp <= 0) {
+      enemies = enemies.filter(e => e != this)
+    }
   }
 
   move(moveConfig) {
@@ -17,30 +35,14 @@ class Player {
     this.x = x;
     this.y = y;
   }
-}
 
-const modifier = 10.25;
-class Movement {
-  constructor(isX, isY) {
-    this.isX = isX;
-    this.isY = isY;
-    this.speedX = 0;
-    this.speedY = 0;
-  }
-  setX(value) {
-    this.isX =  value
-  }
-  setY(value) {
-    this.isY =  value
-  }
-  setSpeedX(value) {
-    this.speedX = value * Math.abs((this.speedX ? (this.speedX/modifier) : 1))
-    console.log(value, this.speedX);
-  }
-  setSpeedY(value) {
-    this.speedY = value * Math.abs((this.speedY ? (this.speedY/modifier) : 1))
-    console.log(value, this.speedY);
+  shoot() {
+    const { bullet } = this;
+    let newBullet = new Bullet({x: player.x, y: player.y, owner: this, ...bullet});
+    shootThrottled(newBullet)
+    // SOUNDS.pew.play();
   }
 }
 
-const movement = new Movement(false,false);
+player = new Player(0, 0, 5, 30)
+

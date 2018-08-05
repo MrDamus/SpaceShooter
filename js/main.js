@@ -1,87 +1,23 @@
-const player = new Player(0,0)
-let bullets = [];
-let enemies = [];
-
-const enemy = new Enemy(180,40)
-
-
-const shoot = (bullet) => {
-    bullets.push(bullet)
+const addEnemies = () => {
+    setInterval(() => {
+        if(!window.document.hidden){
+            let x = width/2 + getRandomArbitrary(-150,150)
+            let y = 0
+            const enemy = new Enemy({x, y, hp: 3, radius: 10})
+            spawnEnemy(enemy);
+        }
+    }, 3000)
 }
 
-function throttle(delay, fn) {
-    let lastCall = 0;
-    return (...args) => {
-      const now = (new Date).getTime();
-      if (now - lastCall < delay) {
-        return;
-      }
-      lastCall = now;
-      return fn(...args);
-    }
-  }
+function start() {
+    addEnemies();
+} 
 
-const shootThrottled = throttle(200, shoot);
+start();
 
-function update() {
-    ctx.clearRect(0, 0, width, height);
-
-    if (keys[38] || keys[87]) {
-        if (velY > -speed) {
-            velY--;
-        }
-    }
-    if (keys[40] || keys[83]) {
-        if (velY < speed) {
-            velY++;
-        }
-    }
-    if (keys[39] || keys[68]) {
-        if (velX < speed) {
-            velX++;
-        }
-    }
-    if (keys[37] || keys[65]) {
-        if (velX > -speed) {
-            velX--;
-        }
-    }
-
-    if (keys[32]) { 
-      const bullet = new Bullet(player.x, player.y);
-      shootThrottled(bullet)
-    }
-
-    velY *= friction;
-    y += velY;
-    velX *= friction;
-    x += velX;
-
-    if (x >= width-radius) {
-        x = width-radius;
-    } else if (x <= radius) {
-        x = radius;
-    }
-
-    if (y > height-radius) {
-        y = height-radius;
-    } else if (y <= radius) {
-        y = radius;
-    }
-
-    player.move({ x, y })
-    player.draw()
-    enemy.draw()
-    bullets = bullets.filter(bullet => bullet.y >= -10)
-    bullets.forEach(bullet => {
-        bullet.draw();
-        }
-    )
-
+if(!window.document.hidden){
     requestAnimationFrame(update);
 }
-
-requestAnimationFrame(update);
 
 document.body.addEventListener("keydown", function (e) {
     keys[e.keyCode] = true;
@@ -89,3 +25,4 @@ document.body.addEventListener("keydown", function (e) {
 document.body.addEventListener("keyup", function (e) {
     keys[e.keyCode] = false;
 });
+

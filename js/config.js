@@ -1,9 +1,13 @@
-const canvas = document.getElementById("canvas"),
-    ctx = canvas.getContext("2d");
+const FONT_NAME = 'kong';
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+    // canvas.style.backgroundColor='#2F2E2E';
     canvas.style.backgroundColor='lightblue';
+    
     width = 360,
     height = 400,
-    speed = 3.4,
+    speed = 2.4,
     friction = 0.94,
     radius = 10
 
@@ -12,3 +16,24 @@ let x = width/2,
     velY = 0,
     velX = 0,
     keys = [];
+    bullets = [];
+    enemies = [];
+    gunDamage = 1;
+    enemyDamage = 1;
+
+const SOUNDS = {
+    pew: document.getElementById('sound_pew'),
+}
+
+let player;
+
+const BULLETS = {
+    DEFAULT_ENEMY: { radius: 1, offset: 20, speed:-10, damage: 1 },
+    DEFAULT_PLAYER: { radius: 1, offset: -20, speed: 10, damage: 1 } 
+    // rozne rysowania, rozne funkcje
+}
+
+const ENEMIES = {
+    DEFAULT_ENEMY: { x, y, hp: 3, radius: 10 },
+
+}
