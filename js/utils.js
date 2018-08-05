@@ -1,7 +1,6 @@
 const shoot = (bullet) => {
     if(!window.document.hidden){
         bullets.push(bullet)
-        // SOUNDS.pew.play();
     }
 }
 
@@ -34,8 +33,7 @@ const handleKeysPressed = () => {
         }
     }
     if (keys[32]) { 
-      const bullet = new Bullet(player.x, player.y);
-      shootThrottled(bullet)
+      player.shoot();
     }
 }
 

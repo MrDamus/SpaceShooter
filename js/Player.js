@@ -34,7 +34,13 @@ class Player {
     this.x = x;
     this.y = y;
   }
+
+  shoot() {
+    const bullet = new Bullet({x: player.x, y: player.y, owner: this });
+    shootThrottled(bullet)
+    // SOUNDS.pew.play();
+  }
 }
 
-const player = new Player(0, 0, 5, 30)
+player = new Player(0, 0, 5, 30)
 
