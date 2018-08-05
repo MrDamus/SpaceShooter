@@ -28,6 +28,12 @@ const SOUNDS = {
 let player;
 
 const BULLETS = {
-    DEFAULT_ENEMY: { radius: 1, offset:20, direction:-10}
-    // DEFAULT_PLAYER: {} rozne rysowania, rozne funkcje
+    DEFAULT_ENEMY: { radius: 1, offset: 20, speed:-10, damage: 1 },
+    DEFAULT_PLAYER: { radius: 1, offset: -20, speed: 10, damage: 1 } 
+    // rozne rysowania, rozne funkcje
+}
+
+const ENEMIES = {
+    DEFAULT_ENEMY: { x, y, hp: 3, radius: 10 },
+
 }

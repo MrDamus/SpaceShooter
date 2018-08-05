@@ -1,5 +1,5 @@
 class Enemy {
-  constructor(x, y, hp, radius, bullet = BULLETS.DEFAULT_ENEMY) {
+  constructor({x, y, hp, radius, bullet = BULLETS.DEFAULT_ENEMY}) {
     this.x = x;
     this.y = y;
     this.hp = hp;

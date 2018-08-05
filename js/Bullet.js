@@ -1,12 +1,12 @@
 class Bullet {
-  constructor({x, y, radius = 2, offset = -20, direction = 10, owner, damage = 1}) {
+  constructor({x, y, radius = 2, offset = -20, speed = 10, owner, damage = 1}) {
     this.x = x;
     this.y = y + offset;
     this.radius = radius;
     this.owner = owner;
     this.damage = damage;
     this.interval = setInterval(() => {
-      this.y -= direction
+      this.y -= speed
     }, 50)
 }
 

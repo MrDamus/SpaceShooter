@@ -1,8 +1,9 @@
 class Player {
-  constructor(x, y, radius, hp) {
+  constructor(x, y, radius, hp, bullet = BULLETS.DEFAULT_PLAYER) {
     this.x = x;
     this.y = y;
     this.hp = hp;
+    this.bullet = bullet
     this.radius = radius;
     this.canvas = document.getElementById("canvas");
   }
@@ -36,8 +37,9 @@ class Player {
   }
 
   shoot() {
-    const bullet = new Bullet({x: player.x, y: player.y, owner: this });
-    shootThrottled(bullet)
+    const { bullet } = this;
+    let newBullet = new Bullet({x: player.x, y: player.y, owner: this, ...bullet});
+    shootThrottled(newBullet)
     // SOUNDS.pew.play();
   }
 }
