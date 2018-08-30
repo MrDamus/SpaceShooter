@@ -36,7 +36,6 @@ class Player {
     ctx.save();
     ctx.beginPath();
     ctx.translate(this.x, this.y);
-    ctx.rotate(this.angle);
     ctx.rect(this.width * -0.5, this.height * -0.5, this.width, this.height);
     ctx.fillStyle = this.color;
     ctx.fill();
@@ -47,7 +46,7 @@ class Player {
       ctx.beginPath();
       ctx.moveTo(this.width * -0.5, this.height * 0.5);
       ctx.lineTo(this.width * 0.5, this.height * 0.5);
-      ctx.lineTo(0, this.height * 0.5 + Math.random() * 5);
+      ctx.lineTo(0, this.height * 0.5 + Math.random() * 8);
       ctx.lineTo(this.width * -0.5, this.height * 0.5);
       ctx.closePath();
       ctx.fillStyle = "orange";
