@@ -21,8 +21,11 @@ if(!window.document.hidden){
 
 document.body.addEventListener("keydown", function (e) {
     keys[e.keyCode] = true;
+    player.engineOn = true;
+
 });
 document.body.addEventListener("keyup", function (e) {
     keys[e.keyCode] = false;
+    player.engineOn = false;
 });
 
