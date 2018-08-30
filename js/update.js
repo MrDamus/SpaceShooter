@@ -12,6 +12,8 @@ function detectBulletCollisions() {
     bullets = bullets.filter(bullet => (bullet.y <= 405 && bullet.y >= -10))
     bullets.forEach(bullet => {
         bullet.draw();
+
+        // collision bullet/enemies
         enemies.forEach(enemy => {
             const { x, y, radius } = enemy
             const leftBorder = x - radius
@@ -29,17 +31,35 @@ function detectBulletCollisions() {
                 bullets = bullets.filter(b => b != bullet)
             }
         })
+
+        // collision bullet/player
+        if(bullet.owner instanceof Player) {
+            // player.height a nie radius.
+            const enemyBulletInPlayerArea = bullet.y >= player.y - player.radius && 
+                                            bullet.y <= player.y + player.radius &&
+                                            bullet.x >= player.x - player.radius &&
+                                            bullet.x <= player.y + player.radius
+
+            if (enemyBulletInPlayerArea) {
+                console.log('collision with player')
+                
+            }
+        }
+
+
+
+
         }
     )
 }
 
 function handleCollision_Enemy_Player(enemy, borders) {
-    const isInPlayerArea =  player.y >= borders.top - player.radius &&
+    const enemyInPlayerArea =  player.y >= borders.top - player.radius &&
                             player.y <= borders.bottom + player.radius &&
                             player.x >= borders.left - player.radius &&
                             player.x <= borders.right + player.radius
                             
-    if(isInPlayerArea) {
+    if(enemyInPlayerArea) {
         player.applyDamage(enemyDamage);
         enemy.applyDamage(enemy.hp);
     }
@@ -47,9 +67,9 @@ function handleCollision_Enemy_Player(enemy, borders) {
 
 function handleCollision_Enemy_Border(enemy, borders) {
     const leftDeadLine = -50;
-    const rightDeadLine = 450;
+    const rightDeadLine = width + 20;
     const topDeadLine = -100;
-    const bottomDeadLine = 410;
+    const bottomDeadLine = height + 20;
 
     const enemyOutOfCanvas = borders.left <= leftDeadLine ||
                         borders.right >= rightDeadLine ||
