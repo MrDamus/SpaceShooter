@@ -33,31 +33,29 @@ function detectBulletCollisions() {
         })
 
         // collision bullet/player
-        if(bullet.owner instanceof Player) {
+        if(bullet.owner instanceof Enemy) {
             // player.height a nie radius.
-            const enemyBulletInPlayerArea = bullet.y >= player.y - player.radius && 
-                                            bullet.y <= player.y + player.radius &&
-                                            bullet.x >= player.x - player.radius &&
-                                            bullet.x <= player.y + player.radius
+            const enemyBulletInPlayerArea = bullet.y >= player.y - player.height && 
+                                            bullet.y <= player.y + player.height &&
+                                            bullet.x >= player.x - player.width &&
+                                            bullet.x <= player.x + player.width
 
             if (enemyBulletInPlayerArea) {
-                console.log('collision with player')
-                
+                console.log('You have been hit')
+                player.applyDamage(enemyDamage)
+                bullets = bullets.filter(b => b != bullet)
+
             }
         }
-
-
-
-
         }
     )
 }
 
 function handleCollision_Enemy_Player(enemy, borders) {
-    const enemyInPlayerArea =  player.y >= borders.top - player.radius &&
-                            player.y <= borders.bottom + player.radius &&
-                            player.x >= borders.left - player.radius &&
-                            player.x <= borders.right + player.radius
+    const enemyInPlayerArea =  player.y >= borders.top - player.height &&
+                            player.y <= borders.bottom + player.height &&
+                            player.x >= borders.left - player.width &&
+                            player.x <= borders.right + player.width
                             
     if(enemyInPlayerArea) {
         player.applyDamage(enemyDamage);
@@ -97,6 +95,15 @@ function handleDrawingEnemies() {
     })
 }
 
+function updateScore() {
+    if (score < 0) document.getElementById("score").innerHTML = "Game Over!";
+    else if (score > 99) document.getElementById("score").innerHTML = "You won!";
+    else {
+        s = "Score : " + score;
+        document.getElementById("score").innerHTML = s;
+    }
+}
+
 
 function update() {
     clearCanvas();
@@ -106,6 +113,7 @@ function update() {
     updateStars();
     detectBulletCollisions();
     handleDrawingEnemies();
+    updateScore();
 
     requestAnimationFrame(update);
 }
