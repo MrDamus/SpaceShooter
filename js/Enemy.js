@@ -1,26 +1,27 @@
 class Enemy {
-  constructor({x, y, hp, radius, points = 10, bullet = BULLETS.DEFAULT_ENEMY}) {
+  constructor({x, y, hp, radius, avatarSrc, points = 5, bullet = BULLETS.DEFAULT_ENEMY}) {
     this.x = x;
     this.y = y;
     this.hp = hp;
     this.points = points;
-    this.bullet = bullet
+    this.bullet = bullet;
     this.radius = radius;
+    console.log(avatarSrc)
     this.interval = setInterval(() => {
       this.spawnNewBullet();
     }, 1277)
+    this.avatar = new Image();
+    this.avatar.src = avatarSrc || '../assets/img/blueE.png';
+    this.avatarWidth = 20;
+    this.avatarHeight = 20;
   }
 
   draw() {
-    ctx.beginPath();
+    const { x, y, avatar, avatarWidth, avatarHeight } = this;
     ctx.save();
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    ctx.shadowColor = '#FFF';
-    ctx.stroke();
-    ctx.fillStyle = 'red';
-    ctx.fill();
+    ctx.translate(-avatarWidth/2, avatarHeight/2);
+    ctx.drawImage(avatar, x, y, avatarWidth, avatarHeight);
     ctx.restore();
-    ctx.closePath();
   }
 
   applyDamage (damage) {

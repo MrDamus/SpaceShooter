@@ -71,3 +71,5 @@ function throttle(delay, fn) {
       return fn(...args);
     }
   }
+
+const getEnemyType = () => Math.random() < 0.5 ? ENEMIES.RED_ENEMY : ENEMIES.ORANGE_ENEMY
