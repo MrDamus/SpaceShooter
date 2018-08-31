@@ -34,14 +34,13 @@ function detectBulletCollisions() {
 
         // collision bullet/player
         if(bullet.owner instanceof Enemy) {
-            // player.height a nie radius.
             const enemyBulletInPlayerArea = bullet.y >= player.y - player.height && 
                                             bullet.y <= player.y + player.height &&
                                             bullet.x >= player.x - player.width &&
                                             bullet.x <= player.x + player.width
 
             if (enemyBulletInPlayerArea) {
-                console.log('You have been hit')
+                console.log('You have been hit by enemy bullet!')
                 player.applyDamage(enemyDamage)
                 bullets = bullets.filter(b => b != bullet)
 
@@ -96,14 +95,24 @@ function handleDrawingEnemies() {
 }
 
 function updateScore() {
-    if (score < 0) document.getElementById("score").innerHTML = "Game Over!";
-    else if (score > 99) document.getElementById("score").innerHTML = "You won!";
+    if (score < 0) {
+        document.getElementById("score").innerHTML = "You suck!";
+    }
+    else if (score > 200) {
+        document.getElementById("score").innerHTML = "You won!";
+    }
     else {
         s = "Score : " + score;
         document.getElementById("score").innerHTML = s;
     }
 }
 
+// GAME OVER 
+function updatePlayerHP() {
+    if (player.hp <= 0) {
+        document.getElementById("score").innerHTML = "Game Over!";
+    }
+}
 
 function update() {
     clearCanvas();
@@ -114,6 +123,7 @@ function update() {
     detectBulletCollisions();
     handleDrawingEnemies();
     updateScore();
+    updatePlayerHP();
 
     requestAnimationFrame(update);
 }
