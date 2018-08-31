@@ -41,6 +41,8 @@ const BULLETS = {
 }
 
 const ENEMIES = {
-    DEFAULT_ENEMY: { x, y, hp: 3, points: 10, avatar: src = '../assets/img/blueE.png', radius: 10 },
-    GREEN_ENEMY: { x ,y, hp: 3, points: 10, avatar: src = '../assets/img/greenE.png', radius: 10 },
+    DEFAULT_ENEMY: { x, y, hp: 3, points: 10, avatarSrc: '../assets/img/blueE.png', radius: 10 },
+    GREEN_ENEMY: { x ,y, hp: 4, points: 20, avatarSrc: '../assets/img/greenE.png', radius: 10 },
+    ORANGE_ENEMY: { x ,y, hp: 5, points: 30, avatarSrc: '../assets/img/orangeE.png', radius: 10 },
+    RED_ENEMY: { x ,y, hp: 6, points: 40, avatarSrc: '../assets/img/redE.png', radius: 10 },
 }

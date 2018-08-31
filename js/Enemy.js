@@ -5,16 +5,15 @@ class Enemy {
     this.hp = hp;
     this.points = points;
     this.bullet = bullet;
-    this.avatarSrc = avatarSrc;
     this.radius = radius;
-
+    console.log(avatarSrc)
     this.interval = setInterval(() => {
       this.spawnNewBullet();
     }, 1277)
     this.avatar = new Image();
     this.avatar.src = avatarSrc || '../assets/img/blueE.png';
-    this.avatarWidth = 24;
-    this.avatarHeight = 24;
+    this.avatarWidth = 20;
+    this.avatarHeight = 20;
   }
 
   draw() {
