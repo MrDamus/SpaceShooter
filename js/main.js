@@ -3,7 +3,8 @@ const addEnemies = () => {
         if(!window.document.hidden){
             let x = width/2 + getRandomArbitrary(-150,150)
             let y = 0
-            const enemy = new Enemy({...ENEMIES.DEFAULT_ENEMY, x,y})
+            const type = getEnemyType();
+            const enemy = new Enemy({...type, x,y})
             spawnEnemy(enemy);
         }
     }, 3000)
@@ -13,10 +14,13 @@ function start() {
     addEnemies();
 } 
 
-start();
+function StartGame () {
+    document.getElementById('ui').style.display = "none";
+    start();
 
-if(!window.document.hidden){
-    requestAnimationFrame(update);
+    if(!window.document.hidden){
+        requestAnimationFrame(update);
+    }
 }
 
 document.body.addEventListener("keydown", function (e) {
