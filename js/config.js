@@ -10,7 +10,7 @@ scoreWrapper.innerHTML = "Score: " + score;
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
     // canvas.style.backgroundColor='#2F2E2E';
-    canvas.style.backgroundColor='lightblue';
+    canvas.style.backgroundColor='darkgrey';
 
     width = 360,
     height = 400,
@@ -41,5 +41,6 @@ const BULLETS = {
 }
 
 const ENEMIES = {
-    DEFAULT_ENEMY: { x, y, hp: 3, points: 10, radius: 10 },
+    DEFAULT_ENEMY: { x, y, hp: 3, points: 10, avatar: src = '../assets/img/blueE.png', radius: 10 },
+    GREEN_ENEMY: { x ,y, hp: 3, points: 10, avatar: src = '../assets/img/greenE.png', radius: 10 },
 }
