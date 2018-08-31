@@ -3,7 +3,7 @@ const addEnemies = () => {
         if(!window.document.hidden){
             let x = width/2 + getRandomArbitrary(-150,150)
             let y = 0
-            const enemy = new Enemy({x, y, hp: 3, radius: 10})
+            const enemy = new Enemy({...ENEMIES.DEFAULT_ENEMY, x,y})
             spawnEnemy(enemy);
         }
     }, 3000)
