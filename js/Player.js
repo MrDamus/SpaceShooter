@@ -6,45 +6,29 @@ class Player {
     this.bullet = bullet;
     this.canvas = document.getElementById("canvas");
 
-    this.color= "black",
+    this.color= "green",
     
-    this.width= 8,
-    this.height= 22,
+    this.width= 15,
+    this.height= 20,
     this.engineOn= false
   }
-
-  // draw() {
-  //   // ------[Triangle]---------
-  //   const triangleWidth = 15;
-  //   const triangleHeight = 15;
-  //   ctx.beginPath();
-  //   ctx.save();
-  //   ctx.moveTo(this.x, this.y);
-  //   ctx.lineTo(this.x + triangleWidth / 2, this.y + triangleHeight);
-  //   ctx.lineTo(this.x - triangleWidth / 2, this.y + triangleHeight);
-  //   // ctx.moveTo(this.x - triangleWidth / 2 , this.y);
-  //   ctx.fillStyle = 'green';
-  //   ctx.fill();
-  //   ctx.closePath();
-  //   ctx.restore();
-  // }
-
-
 
   draw()
 {
     ctx.save();
     ctx.beginPath();
-    ctx.translate(this.x, this.y);
-    ctx.rect(this.width * -0.5, this.height * -0.5, this.width, this.height);
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(this.x + this.width / 2, this.y + this.height);
+    ctx.lineTo(this.x - this.width / 2, this.y + this.height);
+    ctx.closePath();
+
     ctx.fillStyle = this.color;
     ctx.fill();
-    ctx.closePath();
     
     if(this.engineOn)
     {
       ctx.beginPath();
-      ctx.moveTo(this.width * -0.5, this.height * 0.5);
+      ctx.translate(this.x, this.y + this.height/2);
       ctx.lineTo(this.width * 0.5, this.height * 0.5);
       ctx.lineTo(0, this.height * 0.5 + Math.random() * 8);
       ctx.lineTo(this.width * -0.5, this.height * 0.5);
