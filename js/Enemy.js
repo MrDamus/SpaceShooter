@@ -1,8 +1,9 @@
 class Enemy {
-  constructor({x, y, hp, radius, bullet = BULLETS.DEFAULT_ENEMY}) {
+  constructor({x, y, hp, radius, points = 10, bullet = BULLETS.DEFAULT_ENEMY}) {
     this.x = x;
     this.y = y;
     this.hp = hp;
+    this.points = points;
     this.bullet = bullet
     this.radius = radius;
     this.interval = setInterval(() => {
@@ -27,6 +28,7 @@ class Enemy {
     if(this.hp <= 0) {
       this.remove();
       enemies = enemies.filter(e => e != this)
+      score += this.points;
     }
   }
 

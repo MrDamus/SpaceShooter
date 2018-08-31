@@ -1,8 +1,11 @@
 const FONT_NAME = 'kong';
-    
+
+// const pic = new Image();
+// pic.src = '../assets/img/sprite.png';
+
 let score = 0;
 const scoreWrapper = document.getElementById("score");
-scoreWrapper.innerText = "Score: " + score;
+scoreWrapper.innerHTML = "Score: " + score;
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -38,6 +41,5 @@ const BULLETS = {
 }
 
 const ENEMIES = {
-    DEFAULT_ENEMY: { x, y, hp: 3, radius: 10 },
-
+    DEFAULT_ENEMY: { x, y, hp: 3, points: 10, radius: 10 },
 }
