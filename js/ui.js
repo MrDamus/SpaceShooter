@@ -20,3 +20,7 @@ renderUI = () => {
 }
 
 document.fonts.load('10pt "kong"')
+
+document.getElementById('ui').addEventListener('click', () => {
+  StartGame()
+})
