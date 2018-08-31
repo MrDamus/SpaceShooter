@@ -1,10 +1,14 @@
 const FONT_NAME = 'kong';
+    
+let score = 0;
+const scoreWrapper = document.getElementById("score");
+scoreWrapper.innerText = "Score: " + score;
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
     // canvas.style.backgroundColor='#2F2E2E';
     canvas.style.backgroundColor='lightblue';
-    
+
     width = 360,
     height = 400,
     speed = 2.4,
