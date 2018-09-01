@@ -31,6 +31,19 @@
   top: 45%;
 }
 
+#nextLvl {
+  display: none;
+  position: absolute;
+  top: 27%;
+  left: 8px;
+  width: 360px;
+}
+
+#nextLvl h2 {
+  /* width: 100%; */
+  text-align: center;
+}
+
 #over {
   position: absolute;
   top:8px;
