@@ -1,5 +1,5 @@
 const FONT_NAME = 'kong';
-
+const startingHP = 1;
 let score = 0;
 const scoreWrapper = document.getElementById("score");
 scoreWrapper.innerHTML = "Score: " + score;
@@ -43,3 +43,4 @@ const ENEMIES = {
     ORANGE_ENEMY: { x ,y, hp: 5, points: 30, avatarSrc: '../assets/img/orangeE.png', radius: 10 },
     RED_ENEMY: { x ,y, hp: 6, points: 40, avatarSrc: '../assets/img/redE.png', radius: 10 },
 }
+let gameInProgress = true;
