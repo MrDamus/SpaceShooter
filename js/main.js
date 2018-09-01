@@ -17,19 +17,17 @@ function start() {
 function StartGame () {
     document.getElementById('ui').style.display = "none";
     start();
-
     if(!window.document.hidden){
         requestAnimationFrame(update);
     }
 }
 
-document.body.addEventListener("keydown", function (e) {
+document.body.addEventListener("keydown", (e) => {
     keys[e.keyCode] = true;
     player.engineOn = true;
-
 });
-document.body.addEventListener("keyup", function (e) {
+
+document.body.addEventListener("keyup", (e) => {
     keys[e.keyCode] = false;
     player.engineOn = false;
 });
-
