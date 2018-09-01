@@ -9,7 +9,8 @@ function makeStar() {
 		x: Math.random(),
 		y: Math.random(),
 		distance: Math.sqrt(Math.random()),
-		color: 'hsl('+Math.random()*40+',100%,'+(85+Math.random()*30)+'%)'
+		// color: 'hsl('+Math.random()*40+',100%,'+(85+Math.random()*30)+'%)'
+		color: '#fff'
 	};
 }
 
