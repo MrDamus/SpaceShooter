@@ -21,6 +21,13 @@ renderUI = () => {
 
 document.fonts.load('10pt "kong"')
 
-document.getElementById('ui').addEventListener('click', () => {
+const ui = document.getElementById('ui');
+ui.addEventListener('mousedown', (e) => {
   StartGame()
-})
+}, false);
+
+document.addEventListener('keydown', (e) => {
+  if(ui.style.display !== 'none') {
+    StartGame()
+  }
+});
