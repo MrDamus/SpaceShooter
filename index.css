@@ -5,6 +5,10 @@
   font-style: normal;
   }
 
+body {
+  color: white;
+}
+
 #canvas {
   image-rendering: pixelated;
 }
@@ -34,7 +38,7 @@
 #nextLvl {
   display: none;
   position: absolute;
-  top: 27%;
+  top: 16%;
   left: 8px;
   width: 360px;
 }

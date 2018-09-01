@@ -11,10 +11,13 @@ class Bullet {
 }
 
   draw() {
+    ctx.save();
     ctx.beginPath();
     ctx.arc(this.x, this.y+20, this.radius, 0, 2 * Math.PI);
     ctx.stroke();
+    ctx.fillStyle = "yellow";
     ctx.fill();
     ctx.closePath();
+    ctx.restore(); 
   }
 }

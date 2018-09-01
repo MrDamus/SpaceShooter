@@ -1,16 +1,22 @@
 const kongFont = '15px kong'
 
 const renderPlayerHP = () => {
+  ctx.save();
   ctx.font = kongFont;
   ctx.textAlign = 'right';
+  ctx.fillStyle = "white";
   ctx.fillText  (`HP: ${player.hp}`, 355, 15);
+  ctx.restore();
 }
 
 const renderScore = () => {
+  ctx.save();
   ctx.font = kongFont;
   ctx.textBaseline = 'middle';
+  ctx.fillStyle = "white";
   ctx.textAlign = 'left';
   ctx.fillText  (`SCORE: ${score}`, 5, 15);
+  ctx.restore();
 }
 
 renderUI = () => {

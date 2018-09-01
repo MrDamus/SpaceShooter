@@ -14,8 +14,7 @@ scoreWrapper.innerHTML = "Score: " + score;
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-    // canvas.style.backgroundColor='#2F2E2E';
-    canvas.style.backgroundColor='darkgrey';
+    canvas.style.backgroundColor='black';
 
     width = 360,
     height = 400,
@@ -39,8 +38,8 @@ const SOUNDS = {
 
 
 const BULLETS = {
-    DEFAULT_ENEMY: { radius: 1, offset: 20, speed:-10, damage: 1 },
-    DEFAULT_PLAYER: { radius: 1, offset: -20, speed: 10, damage: 1 } 
+    DEFAULT_ENEMY: { radius: 1, offset: 20, speed:-8, damage: 1 },
+    DEFAULT_PLAYER: { radius: 1, offset: -20, speed: 8, damage: 1 } 
     // rozne rysowania, rozne funkcje
 }
 
