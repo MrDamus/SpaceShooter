@@ -1,3 +1,5 @@
 ikona dzwieku wylaczaja dzwiek
 poziom trudnosci 
-not onclick for start but press any button
+spawnowanie prxeciwnikow
+w zaleznosci od score pojawia sie wiecej przeciwnikow 
+show score when game over
