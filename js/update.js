@@ -14,25 +14,27 @@ function detectBulletCollisions() {
         bullet.draw();
 
         // collision bullet/enemies
-        enemies.forEach(enemy => {
-            const { x, y, radius } = enemy
-            const leftBorder = x - radius
-            const rightBorder = x + radius
-            const topBorder = y - radius
-            const bottomBorder = y + radius;
-            const isInHitArea = bullet.y >= topBorder &&
-                                bullet.y <= bottomBorder &&
-                                bullet.x >= leftBorder &&
-                                bullet.x <= rightBorder
-            // TODO: COLLISION FOR players and enemy
+        if (bullet.owner instanceof Player) {
+            enemies.forEach(enemy => {
+                const { x, y, radius } = enemy
+                const leftBorder = x - radius
+                const rightBorder = x + radius
+                const topBorder = y - radius
+                const bottomBorder = y + radius;
+                const isInHitArea = bullet.y >= topBorder &&
+                                    bullet.y <= bottomBorder &&
+                                    bullet.x >= leftBorder &&
+                                    bullet.x <= rightBorder
+                // TODO: COLLISION FOR players and enemy
 
-            if(isInHitArea) {
-                enemy.applyDamage(gunDamage);
-                bullets = bullets.filter(b => b != bullet)
-            }
-        })
+                if(isInHitArea) {
+                    enemy.applyDamage(gunDamage);
+                    bullets = bullets.filter(b => b != bullet)
+                }
+            })
+        }
 
-        // collision bullet/player
+        // collision enemy bullet/player
         if(bullet.owner instanceof Enemy) {
             const enemyBulletInPlayerArea = bullet.y >= player.y - player.height && 
                                             bullet.y <= player.y + player.height &&
