@@ -95,14 +95,14 @@ function handleDrawingEnemies() {
 }
 
 function updateScore() {
-    if (score < 0) {
+    if (score < 40) {
         document.getElementById("score").innerHTML = "You suck!";
     }
-    else if (score > 200) {
-        document.getElementById("score").innerHTML = "You won!";
+    else if (score > 2000) {
+        document.getElementById("score").innerHTML = "You rock! Score:" + score;
     }
     else {
-        s = "Score : " + score;
+        s = "Your score: " + score;
         document.getElementById("score").innerHTML = s;
     }
 }
@@ -110,7 +110,7 @@ function updateScore() {
 // GAME OVER 
 function updatePlayerHP() {
     if (player.hp <= 0) {
-        document.getElementById("score").innerHTML = "Game Over!";
+        // document.getElementById("score").innerHTML = "Game Over!";
         document.getElementById("over").style.display = 'block';
     }
 }
@@ -125,6 +125,7 @@ function update() {
     handleDrawingEnemies();
     updateScore();
     updatePlayerHP();
-
-    requestAnimationFrame(update);
+    if(gameInProgress){
+        requestAnimationFrame(update);
+    }
 }

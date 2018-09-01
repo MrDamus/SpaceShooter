@@ -15,7 +15,7 @@ function start() {
 } 
 
 function StartGame () {
-    document.getElementById('ui').style.display = "none";
+    document.getElementById('startScreen').style.display = "none";
     start();
     if(!window.document.hidden){
         requestAnimationFrame(update);

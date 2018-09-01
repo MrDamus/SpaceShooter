@@ -9,7 +9,7 @@
   image-rendering: pixelated;
 }
 
-#ui {
+#startScreen {
   position: absolute;
   top:8px;
   left:8px;
@@ -19,13 +19,13 @@
   text-align: center;
 }
 
-#ui h1 {
+#startScreen h1 {
   position: absolute;
   width: 100%;
   top: 20%;
 }
 
-#ui p {
+#startScreen p {
   position: absolute;
   width: 100%;
   top: 45%;
@@ -39,7 +39,6 @@
   height: 400px;
   width: 360px;
   text-align: center;
-  display: none;
 }
 
 #over h2 {

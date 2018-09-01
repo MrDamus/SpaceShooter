@@ -21,13 +21,21 @@ renderUI = () => {
 
 document.fonts.load('10pt "kong"')
 
-const ui = document.getElementById('ui');
-ui.addEventListener('mousedown', (e) => {
+const startScreen = document.getElementById('startScreen');
+const over = document.getElementById('over');
+
+startScreen.addEventListener('mousedown', (e) => {
   StartGame()
 }, false);
 
 document.addEventListener('keydown', (e) => {
-  if(ui.style.display !== 'none') {
+  console.log('pressed')
+  if(startScreen.style.display !== 'none' || over.style.display !== 'none') {
+    console.log(gameInProgress)
+
+    document.getElementById('over').style.display = 'none'
+    document.getElementById('startScreen').style.display = 'none'
+    gameInProgress = true;
     StartGame()
   }
 });
