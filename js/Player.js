@@ -61,5 +61,5 @@ class Player {
   }
 }
 
-player = new Player(0, 0, 30)
+player = new Player(0, 0, 1)
 
