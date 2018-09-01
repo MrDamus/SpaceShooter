@@ -111,6 +111,7 @@ function updateScore() {
 function updatePlayerHP() {
     if (player.hp <= 0) {
         document.getElementById("score").innerHTML = "Game Over!";
+        document.getElementById("over").style.display = 'block';
     }
 }
 
