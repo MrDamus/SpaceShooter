@@ -72,4 +72,18 @@ function throttle(delay, fn) {
     }
   }
 
-const getEnemyType = () => Math.random() < 0.5 ? ENEMIES.RED_ENEMY : ENEMIES.ORANGE_ENEMY
+const getEnemyType = () => {
+    const RN = getRandomArbitrary(1,4)
+    if (RN > 0 && RN <= 1) {
+        return ENEMIES.DEFAULT_ENEMY
+    } 
+    if (RN > 1 && RN <= 2) {
+        return ENEMIES.GREEN_ENEMY
+    } 
+    if (RN > 2 && RN <= 3) {
+        return ENEMIES.ORANGE_ENEMY
+    } 
+    if (RN > 3 && RN <= 4) {
+        return ENEMIES.RED_ENEMY
+    }
+}
