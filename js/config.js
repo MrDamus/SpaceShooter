@@ -1,6 +1,8 @@
 const FONT_NAME = 'kong';
 const startingHP = 1;
 
+let player;
+let gameInProgress = true;
 let score = 0;
 let enemiesInterval;
 
@@ -32,7 +34,6 @@ const SOUNDS = {
     pew: document.getElementById('sound_pew'),
 }
 
-let player;
 
 const BULLETS = {
     DEFAULT_ENEMY: { radius: 1, offset: 20, speed:-10, damage: 1 },
@@ -46,4 +47,3 @@ const ENEMIES = {
     ORANGE_ENEMY: { x ,y, hp: 5, points: 30, avatarSrc: '../assets/img/orangeE.png', radius: 10 },
     RED_ENEMY: { x ,y, hp: 6, points: 40, avatarSrc: '../assets/img/redE.png', radius: 10 },
 }
-let gameInProgress = true;
