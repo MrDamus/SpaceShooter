@@ -7,7 +7,17 @@ const addEnemies = () => {
             const enemy = new Enemy({...type, x,y})
             spawnEnemy(enemy);
         }
-    }, 3000)
+    }, spawnEnemyInterval)
+}
+
+function nextStage() {
+    clearInterval(enemiesInterval);
+    document.getElementById('nextLvl').style.display = "block";
+    spawnEnemyInterval -= 200;
+    setTimeout(() => {
+        document.getElementById('nextLvl').style.display = "none";
+        addEnemies();
+    }, 2000)
 }
 
 function start() {

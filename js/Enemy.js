@@ -27,7 +27,7 @@ class Enemy {
     this.hp -= damage;
     if(this.hp <= 0) {
       this.remove();
-      score += this.points;
+      incrementScore(this.points);
     }
   }
 
