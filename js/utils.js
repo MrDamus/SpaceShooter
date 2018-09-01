@@ -91,7 +91,7 @@ const getEnemyType = () => {
 let nextStageScore = 100;
 const incrementScore = (value) => {
     score += value;
-    if(score > nextStageScore) {
+    if(score >= nextStageScore) {
         nextStageScore += 100;
         nextStage()
     }

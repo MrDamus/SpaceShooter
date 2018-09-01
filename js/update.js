@@ -114,10 +114,10 @@ function update() {
     clearCanvas();
     handlePlayerMovement();
     handleKeysPressed();
-    renderUI();
     updateStars();
     detectBulletCollisions();
     handleDrawingEnemies();
+    renderUI();
     updateScore();
     if(gameInProgress){
         requestAnimationFrame(update);
