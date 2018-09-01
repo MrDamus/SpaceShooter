@@ -1,6 +1,9 @@
 const FONT_NAME = 'kong';
 const startingHP = 1;
+
 let score = 0;
+let enemiesInterval;
+
 const scoreWrapper = document.getElementById("score");
 scoreWrapper.innerHTML = "Score: " + score;
 

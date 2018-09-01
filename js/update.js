@@ -107,14 +107,6 @@ function updateScore() {
     }
 }
 
-// GAME OVER 
-function updatePlayerHP() {
-    if (player.hp <= 0) {
-        // document.getElementById("score").innerHTML = "Game Over!";
-        document.getElementById("over").style.display = 'block';
-    }
-}
-
 function update() {
     clearCanvas();
     handlePlayerMovement();
@@ -124,7 +116,6 @@ function update() {
     detectBulletCollisions();
     handleDrawingEnemies();
     updateScore();
-    updatePlayerHP();
     if(gameInProgress){
         requestAnimationFrame(update);
     }

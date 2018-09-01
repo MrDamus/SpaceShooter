@@ -1,5 +1,5 @@
 const addEnemies = () => {
-    setInterval(() => {
+    enemiesInterval = setInterval(() => {
         if(!window.document.hidden){
             let x = width/2 + getRandomArbitrary(-150,150)
             let y = 0
@@ -11,11 +11,23 @@ const addEnemies = () => {
 }
 
 function start() {
+    clearInterval(enemiesInterval);
     addEnemies();
-} 
+}
 
 function StartGame () {
     document.getElementById('startScreen').style.display = "none";
+    player.hp = startingHP; 
+    score = 0;
+    enemies.forEach(enemy => {
+        enemy.remove();
+    });
+    enemies = [];
+    enemies.length = 0;
+    bullets = [];
+    bullets.length = 0;
+    gameInProgress = true;
+    document.getElementById("over").style.display = 'none';
     start();
     if(!window.document.hidden){
         requestAnimationFrame(update);

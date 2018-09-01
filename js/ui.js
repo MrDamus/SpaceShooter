@@ -4,7 +4,6 @@ const renderPlayerHP = () => {
   ctx.font = kongFont;
   ctx.textAlign = 'right';
   ctx.fillText  (`HP: ${player.hp}`, 355, 15);
-  // const showHp = 'Player'
 }
 
 const renderScore = () => {
@@ -29,13 +28,17 @@ startScreen.addEventListener('mousedown', (e) => {
 }, false);
 
 document.addEventListener('keydown', (e) => {
-  console.log('pressed')
-  if(startScreen.style.display !== 'none' || over.style.display !== 'none') {
-    console.log(gameInProgress)
-
-    document.getElementById('over').style.display = 'none'
-    document.getElementById('startScreen').style.display = 'none'
-    gameInProgress = true;
-    StartGame()
+  if (e.keyCode == 13) {
+    if(startScreen.style.display !== 'none' || over.style.display !== 'none') {
+      document.getElementById('over').style.display = 'none'
+      document.getElementById('startScreen').style.display = 'none'
+      gameInProgress = true;
+      StartGame()
+    }
   }
+});
+
+document.body.addEventListener("keydown", (e) => {
+  keys[e.keyCode] = true;
+  player.engineOn = true;
 });

@@ -44,6 +44,9 @@ class Player {
     this.hp -= damage;
     if(this.hp <= 0) {
       enemies = enemies.filter(e => e != this)
+      document.getElementById("over").style.display = 'block';
+      gameInProgress = false;
+
     }
   }
 
