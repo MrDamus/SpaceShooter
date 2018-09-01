@@ -1,5 +1,7 @@
 const FONT_NAME = 'kong';
-const startingHP = 1;
+const startingHP = 10;
+
+let spawnEnemyBulletInterval = 2000;
 
 let player;
 let gameInProgress = true;

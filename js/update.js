@@ -25,7 +25,7 @@ function detectBulletCollisions() {
                                     bullet.y <= bottomBorder &&
                                     bullet.x >= leftBorder &&
                                     bullet.x <= rightBorder
-                // TODO: COLLISION FOR players and enemy
+                //  COLLISION FOR players and enemy
 
                 if(isInHitArea) {
                     enemy.applyDamage(gunDamage);
@@ -76,7 +76,7 @@ function handleCollision_Enemy_Border(enemy, borders) {
                         borders.bottom >= bottomDeadLine
 
     if (enemyOutOfCanvas) {
-        enemy.applyDamage(enemy.hp);
+        enemy.remove();
     }
 }
 
@@ -107,6 +107,7 @@ function updateScore() {
         s = "Your score: " + score;
         document.getElementById("score").innerHTML = s;
     }
+    
 }
 
 function update() {

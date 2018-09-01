@@ -8,7 +8,7 @@ class Enemy {
     this.radius = radius;
     this.interval = setInterval(() => {
       this.spawnNewBullet();
-    }, 1277)
+    }, spawnEnemyBulletInterval - score)
     this.avatar = new Image();
     this.avatar.src = avatarSrc || '../assets/img/blueE.png';
     this.avatarWidth = 20;
@@ -27,7 +27,6 @@ class Enemy {
     this.hp -= damage;
     if(this.hp <= 0) {
       this.remove();
-      enemies = enemies.filter(e => e != this)
       score += this.points;
     }
   }
@@ -46,5 +45,6 @@ class Enemy {
 
   remove() {
     clearInterval(this.interval);
+    enemies = enemies.filter(e => e != this)
   }
 }
