@@ -1,8 +1,5 @@
 const FONT_NAME = 'kong';
 
-// const pic = new Image();
-// pic.src = '../assets/img/sprite.png';
-
 let score = 0;
 const scoreWrapper = document.getElementById("score");
 scoreWrapper.innerHTML = "Score: " + score;
