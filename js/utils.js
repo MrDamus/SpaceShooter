@@ -73,3 +73,13 @@ function throttle(delay, fn) {
   }
 
 const getEnemyType = () => Math.random() < 0.5 ? ENEMIES.RED_ENEMY : ENEMIES.ORANGE_ENEMY
+
+// wyjebac gamein progres flage z update bo ustawia co klatke false 
+function restart() {
+    player.hp = startingHP; 
+    score = 0;
+    enemies = [];
+    gameInProgress = false;
+
+
+} 

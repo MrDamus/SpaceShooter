@@ -61,5 +61,5 @@ class Player {
   }
 }
 
-player = new Player(0, 0, 1)
+player = new Player(0, 0, startingHP)
 
