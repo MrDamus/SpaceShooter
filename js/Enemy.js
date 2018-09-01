@@ -6,7 +6,6 @@ class Enemy {
     this.points = points;
     this.bullet = bullet;
     this.radius = radius;
-    console.log(avatarSrc)
     this.interval = setInterval(() => {
       this.spawnNewBullet();
     }, 1277)
