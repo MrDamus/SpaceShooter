@@ -1,5 +1,11 @@
+@font-face { 
+  font-family: kong;
+  src: url('/font/kong.ttf');
+}
+
 body {
   color: white;
+  font-family: kong;
 }
 
 #canvas {
@@ -54,13 +60,14 @@ body {
 #over h2 {
   position: absolute;
   width: 100%;
-  top: 28%;
+  font-size: 28px;
+  top: 35%;
 }
 
 #over p {
   position: absolute;
   width: 100%;
-  top: 45%;
+  top: 59%;
 }
 
 #score {
