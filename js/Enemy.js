@@ -1,5 +1,5 @@
 class Enemy {
-  constructor({x, y, hp, radius, avatarSrc, points = 5, bullet = BULLETS.DEFAULT_ENEMY, velX, velY}) {
+  constructor({x, y, hp, radius, avatarSrc, points = 5, bullet = BULLETS.DEFAULT_ENEMY, velX, velY, isDestroyed}) {
     this.x = x;
     this.y = y;
     this.hp = hp;
@@ -13,6 +13,7 @@ class Enemy {
     this.avatar.src = avatarSrc;
     this.avatarWidth = 20;
     this.avatarHeight = 20;
+    this.isDestroyed = isDestroyed;
     this.velX = getRandomArbitrary(-velX, velY * 99/100);
     this.velY = getRandomArbitrary(0.1, velY);
   }
@@ -34,6 +35,7 @@ class Enemy {
   }
 
   explode() {
+    this.isDestroyed = true;
     this.avatar = boom;
     setTimeout(() => {
       this.remove();
@@ -42,7 +44,6 @@ class Enemy {
 
   spawnNewBullet(){
     const { x, y, bullet } = this;
-    console.log(bullet)
     const newBullet = new Bullet({ x, y, owner: this, ...bullet})
     shoot(newBullet);
   }

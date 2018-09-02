@@ -25,11 +25,13 @@ function detectBulletCollisions() {
                                     bullet.y <= bottomBorder &&
                                     bullet.x >= leftBorder &&
                                     bullet.x <= rightBorder
-                //  COLLISION FOR players and enemy
 
+                //  COLLISION FOR player bullets and enemy
                 if(isInHitArea) {
-                    enemy.applyDamage(gunDamage);
-                    bullets = bullets.filter(b => b != bullet)
+                    if (!enemy.isDestroyed) {
+                        enemy.applyDamage(gunDamage);
+                        bullets = bullets.filter(b => b != bullet)
+                    }
                 }
             })
         }
@@ -44,7 +46,6 @@ function detectBulletCollisions() {
             if (enemyBulletInPlayerArea) {
                 player.applyDamage(enemyDamage)
                 bullets = bullets.filter(b => b != bullet)
-
             }
         }
         }
@@ -58,8 +59,10 @@ function handleCollision_Enemy_Player(enemy, borders) {
                             player.x <= borders.right + player.width
                             
     if(enemyInPlayerArea) {
-        player.applyDamage(enemyDamage);
-        enemy.applyDamage(enemy.hp);
+        if (!enemy.isDestroyed) {
+            player.applyDamage(enemyDamage);
+            enemy.applyDamage(enemy.hp);
+        }
     }
 }
 
