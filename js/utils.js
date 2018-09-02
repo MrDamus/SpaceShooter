@@ -88,7 +88,6 @@ const getEnemyType = () => {
     }
 }
 
-let nextStageScore = 100;
 const incrementScore = (value) => {
     score += value;
     if(score >= nextStageScore) {

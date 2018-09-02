@@ -1,6 +1,8 @@
 const FONT_NAME = 'kong';
 const startingHP = 10;
 
+let nextStageScore = 100;
+
 let spawnEnemyInterval = 3600;
 let spawnEnemyBulletInterval = 2000;
 
@@ -42,16 +44,17 @@ const SOUNDS = {
     pew: document.getElementById('sound_pew'),
 }
 
-
 const BULLETS = {
-    DEFAULT_ENEMY:  { radiusX: 1, radiusY: 4, offset: 20, speed:-8, damage: 1 },
-    DEFAULT_PLAYER: { radiusX: 1, radiusY: 4, offset: -20, speed: 8, damage: 1 } 
-    // rozne rysowania, rozne funkcje
+    DEFAULT_ENEMY:  { radiusX: 1, radiusY: 4, offset: 20, speed:-8, damage: 1, color: 'blue' },
+    GREEN_ENEMY:    { radiusX: 2, radiusY: 4, offset: 20, speed:-8, damage: 1, color: 'green' },
+    ORANGE_ENEMY:   { radiusX: 1, radiusY: 6, offset: 20, speed:-8, damage: 2, color: 'orange' },
+    RED_ENEMY:      { radiusX: 5, radiusY: 1, offset: 20, speed:-8, damage: 3, color: 'red' },
+    DEFAULT_PLAYER: { radiusX: 1, radiusY: 4, offset: -20, speed: 8, damage: 1, color: 'yellow' } 
 }
 
 const ENEMIES = {
-    DEFAULT_ENEMY:  { x, y, hp: 1, points: 10, radius: 10, velX: 1, velY: 1, avatarSrc: 'assets/img/blueE.png',  },
-    GREEN_ENEMY:    { x, y, hp: 2, points: 20, radius: 10, velX: 1, velY: 2, avatarSrc: 'assets/img/greenE.png',  },
-    ORANGE_ENEMY:   { x, y, hp: 3, points: 30, radius: 10, velX: 1, velY: 3, avatarSrc: 'assets/img/orangeE.png',  },
-    RED_ENEMY:      { x, y, hp: 4, points: 40, radius: 10, velX: 1, velY: .5, avatarSrc: 'assets/img/redE.png',  },
+    DEFAULT_ENEMY:  { x, y, hp: 1, points: 10, radius: 10, velX: .9, velY: 1, avatarSrc: 'assets/img/blueE.png', bullet: BULLETS.DEFAULT_ENEMY },
+    GREEN_ENEMY:    { x, y, hp: 2, points: 20, radius: 10, velX: .4, velY: 2, avatarSrc: 'assets/img/greenE.png', bullet: BULLETS.GREEN_ENEMY },
+    ORANGE_ENEMY:   { x, y, hp: 3, points: 30, radius: 10, velX: .6, velY: 3, avatarSrc: 'assets/img/orangeE.png', bullet: BULLETS.ORANGE_ENEMY },
+    RED_ENEMY:      { x, y, hp: 4, points: 40, radius: 10, velX: 1, velY: .6, avatarSrc: 'assets/img/redE.png', bullet: BULLETS.RED_ENEMY },
 }
