@@ -3,8 +3,8 @@
 >Inspired by game 'Space Invaders'
 ---
 # Controls
-Click on game window or press Enter to start the game.
-Use W,S,A,D or arrows to move your space ship and SPACE to shoot.
+Click on the screen or press ENTER to start the game.
+Use W,S,A,D or ARROWS to move your space ship and SPACE to shoot.
 
 >Built in pure javascript.
 ---
