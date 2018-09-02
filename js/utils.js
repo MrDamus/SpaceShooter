@@ -43,16 +43,16 @@ const applyForces = () => {
     velX *= friction;
     x += velX;
 
-    if (x >= width-radius) {
-        x = width-radius;
-    } else if (x <= radius) {
-        x = radius;
+    if (x+6 >= width-radius) {
+        x = width-radius-6;
+    } else if (x-6 <= radius) {
+        x = radius + 6;
     }
 
-    if (y > height-radius) {
-        y = height-radius;
-    } else if (y <= radius) {
-        y = radius;
+    if (y+15 > height-radius) {
+        y = height-radius-15;
+    } else if (y +9 <= radius) {
+        y = radius - 9;
     }
 }
 
@@ -72,4 +72,26 @@ function throttle(delay, fn) {
     }
   }
 
-const getEnemyType = () => Math.random() < 0.5 ? ENEMIES.RED_ENEMY : ENEMIES.ORANGE_ENEMY
+const getEnemyType = () => {
+    const RN = getRandomArbitrary(0,4)
+    if (RN > 0 && RN <= 1) {
+        return ENEMIES.DEFAULT_ENEMY
+    } 
+    if (RN > 1 && RN <= 2) {
+        return ENEMIES.GREEN_ENEMY
+    } 
+    if (RN > 2 && RN <= 3) {
+        return ENEMIES.ORANGE_ENEMY
+    } 
+    if (RN > 3 && RN <= 4) {
+        return ENEMIES.RED_ENEMY
+    }
+}
+
+const incrementScore = (value) => {
+    score += value;
+    if(score >= nextStageScore) {
+        nextStageScore += 100;
+        nextStage()
+    }
+}

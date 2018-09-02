@@ -1,20 +1,86 @@
-@font-face {
-  font-family: "kong";
-  src: './font/kong.ttf';
-  font-weight: 200;
-  font-style: normal;
-  }
+@font-face { 
+  font-family: kong;
+  src: url('/font/kong.ttf');
+}
+
+body {
+  color: white;
+  font-family: kong;
+}
 
 #canvas {
   image-rendering: pixelated;
 }
 
-#ui {
+#startScreen {
   position: absolute;
   top:8px;
   left:8px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(200, 200, 200, 0.3);
   height: 400px;
   width: 360px;
   text-align: center;
+}
+
+#startScreen h1 {
+  position: absolute;
+  width: 100%;
+  top: 20%;
+}
+
+#startScreen p {
+  position: absolute;
+  width: 100%;
+  top: 45%;
+}
+
+#nextLvl {
+  display: none;
+  position: absolute;
+  top: 16%;
+  left: 8px;
+  width: 360px;
+}
+
+#nextLvl h2 {
+  text-align: center;
+}
+
+#over {
+  position: absolute;
+  top:8px;
+  left:8px;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 400px;
+  width: 360px;
+  text-align: center;
+}
+
+#over h2 {
+  position: absolute;
+  width: 100%;
+  font-size: 28px;
+  top: 35%;
+}
+
+#over p {
+  position: absolute;
+  width: 100%;
+  top: 59%;
+}
+
+#score {
+  width: 100%;
+  position: absolute;
+  top: 10%;
+}
+
+#restart {
+  position: absolute;
+  top: 60%;
+  left: 100px;
+  width: 150px;
+  height: 30px;
+  background-color: green;
+  line-height: 29px;
 }

@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <!--<![endif]-->
-<html class="no-js">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
+    <title>Space Shooter</title>
+    <meta name='keywords' content='Browser game, Space game, minigame, js Game, javascript game'>
+    <meta name="description" content="Browser game made for competition">
+    <meta name='author' content='Damian Karwowski, themrdamus@gmail.com'>
+    <meta name='language' content='EN'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.min.css">
+    <link rel="shortcut icon" type="image/png" href="./assets/img/ship.png">
   </head>
   <body>
-    <div>
-        <audio id="sound_pew" src="/assets/audio/pew.mp3">
+    <div id="startScreen">
+      <h1>Space shooter</h1>
+      <p>Press Enter button to start</p>
     </div>
-    <div id="ui">Space shooter</div>
+    <div id="nextLvl">
+      <h2>Next Stage</h2>
+    </div>
+    <div id="over" style="display: none;">
+      <h2>Game over!</h2>
+      <h1 id="score"></h1>
+      <p>Press enter to start again.</p>
+    </div>
     <canvas id="canvas" width="360" height="400"></canvas>
-    <div id="score"></div>
-
-    <script inline src="./js/config.js"></script>
-    <script inline src="./js/utils.js"></script>
-    <script inline src="./js/stars.js"></script>
-    <script inline src="./js/Player.js"></script>
-    <script inline src="./js/Bullet.js"></script>
-    <script inline src="./js/Enemy.js"></script>
-    <script inline src="./js/ui.js"></script>
-    <script inline src="./js/update.js"></script>
-    <script src="./js/main.js" async defer></script>
+    <script src="/merged.min.js" async defer></script>
   </body>
 </html>

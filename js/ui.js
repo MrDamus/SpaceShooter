@@ -1,17 +1,20 @@
-const kongFont = '15px kong'
-
 const renderPlayerHP = () => {
-  ctx.font = kongFont;
+  ctx.save();
+  ctx.font = '16px kong'
   ctx.textAlign = 'right';
-  ctx.fillText  (`HP: ${player.hp}`, 355, 15);
-  // const showHp = 'Player'
+  ctx.fillStyle = "white";
+  ctx.fillText  (`HP: ${player.hp}`, 355, 20);
+  ctx.restore();
 }
 
 const renderScore = () => {
-  ctx.font = kongFont;
+  ctx.save();
+  ctx.font = '16px kong'
   ctx.textBaseline = 'middle';
+  ctx.fillStyle = "white";
   ctx.textAlign = 'left';
   ctx.fillText  (`SCORE: ${score}`, 5, 15);
+  ctx.restore();
 }
 
 renderUI = () => {
@@ -19,8 +22,20 @@ renderUI = () => {
   renderScore();
 }
 
-document.fonts.load('10pt "kong"')
+const startScreen = document.getElementById('startScreen');
+const over = document.getElementById('over');
 
-document.getElementById('ui').addEventListener('click', () => {
+startScreen.addEventListener('mousedown', (e) => {
   StartGame()
-})
+}, false);
+
+document.addEventListener('keydown', (e) => {
+  if (e.keyCode == 13) {
+    if(startScreen.style.display !== 'none' || over.style.display !== 'none') {
+      document.getElementById('over').style.display = 'none'
+      document.getElementById('startScreen').style.display = 'none'
+      gameInProgress = true;
+      StartGame()
+    }
+  }
+});

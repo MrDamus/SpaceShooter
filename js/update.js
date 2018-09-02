@@ -14,25 +14,29 @@ function detectBulletCollisions() {
         bullet.draw();
 
         // collision bullet/enemies
-        enemies.forEach(enemy => {
-            const { x, y, radius } = enemy
-            const leftBorder = x - radius
-            const rightBorder = x + radius
-            const topBorder = y - radius
-            const bottomBorder = y + radius;
-            const isInHitArea = bullet.y >= topBorder &&
-                                bullet.y <= bottomBorder &&
-                                bullet.x >= leftBorder &&
-                                bullet.x <= rightBorder
-            // TODO: COLLISION FOR players and enemy
+        if (bullet.owner instanceof Player) {
+            enemies.forEach(enemy => {
+                const { x, y, radius } = enemy
+                const leftBorder = x - radius
+                const rightBorder = x + radius
+                const topBorder = y - radius
+                const bottomBorder = y + radius;
+                const isInHitArea = bullet.y >= topBorder &&
+                                    bullet.y <= bottomBorder &&
+                                    bullet.x >= leftBorder &&
+                                    bullet.x <= rightBorder
 
-            if(isInHitArea) {
-                enemy.applyDamage(gunDamage);
-                bullets = bullets.filter(b => b != bullet)
-            }
-        })
+                //  COLLISION FOR player bullets and enemy
+                if(isInHitArea) {
+                    if (!enemy.isDestroyed) {
+                        enemy.applyDamage(gunDamage);
+                        bullets = bullets.filter(b => b != bullet)
+                    }
+                }
+            })
+        }
 
-        // collision bullet/player
+        // collision enemy bullet/player
         if(bullet.owner instanceof Enemy) {
             const enemyBulletInPlayerArea = bullet.y >= player.y - player.height && 
                                             bullet.y <= player.y + player.height &&
@@ -40,10 +44,8 @@ function detectBulletCollisions() {
                                             bullet.x <= player.x + player.width
 
             if (enemyBulletInPlayerArea) {
-                console.log('You have been hit by enemy bullet!')
                 player.applyDamage(enemyDamage)
                 bullets = bullets.filter(b => b != bullet)
-
             }
         }
         }
@@ -57,24 +59,30 @@ function handleCollision_Enemy_Player(enemy, borders) {
                             player.x <= borders.right + player.width
                             
     if(enemyInPlayerArea) {
-        player.applyDamage(enemyDamage);
-        enemy.applyDamage(enemy.hp);
+        if (!enemy.isDestroyed) {
+            player.applyDamage(enemyDamage);
+            enemy.applyDamage(enemy.hp);
+        }
     }
 }
 
 function handleCollision_Enemy_Border(enemy, borders) {
-    const leftDeadLine = -50;
-    const rightDeadLine = width + 20;
+    const leftDeadLine = 0;
+    const rightDeadLine = width;
     const topDeadLine = -100;
     const bottomDeadLine = height + 20;
 
-    const enemyOutOfCanvas = borders.left <= leftDeadLine ||
-                        borders.right >= rightDeadLine ||
-                        borders.top <= topDeadLine ||
-                        borders.bottom >= bottomDeadLine
+    const enemyOutOfSidewall =      borders.left <= leftDeadLine ||
+                                    borders.right >= rightDeadLine
+    const enemyOutOfVerticalWall =  borders.top <= topDeadLine ||
+                                    borders.bottom >= bottomDeadLine
 
-    if (enemyOutOfCanvas) {
-        enemy.applyDamage(enemy.hp);
+    if (enemyOutOfSidewall) {
+        enemy.velX = -enemy.velX;
+    }
+
+    if (enemyOutOfVerticalWall) {
+        enemy.remove();
     }
 }
 
@@ -95,35 +103,29 @@ function handleDrawingEnemies() {
 }
 
 function updateScore() {
-    if (score < 0) {
+    if (score < 40) {
         document.getElementById("score").innerHTML = "You suck!";
     }
-    else if (score > 200) {
-        document.getElementById("score").innerHTML = "You won!";
+    else if (score > 2000) {
+        document.getElementById("score").innerHTML = "You rock! Score:" + score;
     }
     else {
-        s = "Score : " + score;
+        s = "Score: " + score;
         document.getElementById("score").innerHTML = s;
     }
-}
-
-// GAME OVER 
-function updatePlayerHP() {
-    if (player.hp <= 0) {
-        document.getElementById("score").innerHTML = "Game Over!";
-    }
+    
 }
 
 function update() {
     clearCanvas();
     handlePlayerMovement();
     handleKeysPressed();
-    renderUI();
     updateStars();
     detectBulletCollisions();
     handleDrawingEnemies();
+    renderUI();
     updateScore();
-    updatePlayerHP();
-
-    requestAnimationFrame(update);
+    if(gameInProgress){
+        requestAnimationFrame(update);
+    }
 }
