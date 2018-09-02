@@ -65,17 +65,21 @@ function handleCollision_Enemy_Player(enemy, borders) {
 }
 
 function handleCollision_Enemy_Border(enemy, borders) {
-    const leftDeadLine = -50;
-    const rightDeadLine = width + 20;
+    const leftDeadLine = 0;
+    const rightDeadLine = width;
     const topDeadLine = -100;
     const bottomDeadLine = height + 20;
 
-    const enemyOutOfCanvas = borders.left <= leftDeadLine ||
-                        borders.right >= rightDeadLine ||
-                        borders.top <= topDeadLine ||
-                        borders.bottom >= bottomDeadLine
+    const enemyOutOfSidewall =      borders.left <= leftDeadLine ||
+                                    borders.right >= rightDeadLine
+    const enemyOutOfVerticalWall =  borders.top <= topDeadLine ||
+                                    borders.bottom >= bottomDeadLine
 
-    if (enemyOutOfCanvas) {
+    if (enemyOutOfSidewall) {
+        enemy.velX = -enemy.velX;
+    }
+
+    if (enemyOutOfVerticalWall) {
         enemy.remove();
     }
 }
