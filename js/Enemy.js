@@ -28,13 +28,21 @@ class Enemy {
   applyDamage (damage) {
     this.hp -= damage;
     if(this.hp <= 0) {
-      this.remove();
+      this.explode();
       incrementScore(this.points);
     }
   }
 
+  explode() {
+    this.avatar = boom;
+    setTimeout(() => {
+      this.remove();
+    }, 1000);
+  }
+
   spawnNewBullet(){
     const { x, y, bullet } = this;
+    console.log(bullet)
     const newBullet = new Bullet({ x, y, owner: this, ...bullet})
     shoot(newBullet);
   }
