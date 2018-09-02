@@ -1,8 +1,9 @@
 class Bullet {
-  constructor({x, y, radius = 2, offset = -20, speed = 10, owner, damage = 1}) {
+  constructor({x, y, radiusX = 2, radiusY = 6, offset = -20, speed = 10, owner, damage = 1}) {
     this.x = x;
     this.y = y + offset;
-    this.radius = radius;
+    this.radiusX = radiusX;
+    this.radiusY = radiusY;
     this.owner = owner;
     this.damage = damage;
     this.interval = setInterval(() => {
@@ -13,7 +14,7 @@ class Bullet {
   draw() {
     ctx.save();
     ctx.beginPath();
-    ctx.arc(this.x, this.y+20, this.radius, 0, 2 * Math.PI);
+    ctx.ellipse(this.x, this.y+20, this.radiusX, this.radiusY, 0, 2 * Math.PI, 0);
     ctx.stroke();
     ctx.fillStyle = "yellow";
     ctx.fill();

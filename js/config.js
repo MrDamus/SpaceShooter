@@ -38,14 +38,14 @@ const SOUNDS = {
 
 
 const BULLETS = {
-    DEFAULT_ENEMY: { radius: 1, offset: 20, speed:-8, damage: 1 },
-    DEFAULT_PLAYER: { radius: 1, offset: -20, speed: 8, damage: 1 } 
+    DEFAULT_ENEMY:  { radiusX: 1, radiusY: 3, offset: 20, speed:-8, damage: 1 },
+    DEFAULT_PLAYER: { radiusX: 1, radiusY: 3, offset: -20, speed: 8, damage: 1 } 
     // rozne rysowania, rozne funkcje
 }
 
 const ENEMIES = {
-    DEFAULT_ENEMY: { x, y, hp: 3, points: 10, avatarSrc: '../assets/img/blueE.png', radius: 10 },
-    GREEN_ENEMY: { x ,y, hp: 4, points: 20, avatarSrc: '../assets/img/greenE.png', radius: 10 },
-    ORANGE_ENEMY: { x ,y, hp: 5, points: 30, avatarSrc: '../assets/img/orangeE.png', radius: 10 },
-    RED_ENEMY: { x ,y, hp: 6, points: 40, avatarSrc: '../assets/img/redE.png', radius: 10 },
+    DEFAULT_ENEMY:  { x, y, hp: 1, points: 10, radius: 9, velX: 1, velY: 1, avatarSrc: 'assets/img/blueE.png',  },
+    GREEN_ENEMY:    { x, y, hp: 2, points: 20, radius: 9, velX: 1, velY: 2, avatarSrc: 'assets/img/greenE.png',  },
+    ORANGE_ENEMY:   { x, y, hp: 3, points: 30, radius: 9, velX: 1, velY: 3, avatarSrc: 'assets/img/orangeE.png',  },
+    RED_ENEMY:      { x, y, hp: 4, points: 40, radius: 9, velX: 1, velY: .5, avatarSrc: 'assets/img/redE.png',  },
 }
