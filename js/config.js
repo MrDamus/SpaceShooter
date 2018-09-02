@@ -45,10 +45,10 @@ const SOUNDS = {
 }
 
 const BULLETS = {
-    DEFAULT_ENEMY:  { radiusX: 1, radiusY: 4, offset: 20, speed:-8, damage: 1, color: 'blue' },
+    DEFAULT_ENEMY:  { radiusX: 3, radiusY: 3, offset: 20, speed:-8, damage: 1, color: 'blue' },
     GREEN_ENEMY:    { radiusX: 2, radiusY: 4, offset: 20, speed:-8, damage: 1, color: 'green' },
     ORANGE_ENEMY:   { radiusX: 1, radiusY: 6, offset: 20, speed:-8, damage: 2, color: 'orange' },
-    RED_ENEMY:      { radiusX: 5, radiusY: 1, offset: 20, speed:-8, damage: 3, color: 'red' },
+    RED_ENEMY:      { radiusX: 7, radiusY: 2, offset: 20, speed:-8, damage: 3, color: 'red' },
     DEFAULT_PLAYER: { radiusX: 1, radiusY: 4, offset: -20, speed: 8, damage: 1, color: 'yellow' } 
 }
 

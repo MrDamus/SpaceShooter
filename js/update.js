@@ -110,7 +110,7 @@ function updateScore() {
         document.getElementById("score").innerHTML = "You rock! Score:" + score;
     }
     else {
-        s = "Your score: " + score;
+        s = "Score: " + score;
         document.getElementById("score").innerHTML = s;
     }
     
