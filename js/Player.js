@@ -6,7 +6,7 @@ class Player {
     this.bullet = bullet;
     this.canvas = document.getElementById("canvas");
     this.img = new Image();
-    this.img.src = imgSrc || '../assets/img/ship.png';
+    this.img.src = imgSrc || 'assets/img/ship.png';
     this.width = 20,
     this.height = 20,
     this.engineOn = false
