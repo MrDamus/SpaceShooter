@@ -1,13 +1,15 @@
 const renderPlayerHP = () => {
   ctx.save();
+  ctx.font = '16px kong'
   ctx.textAlign = 'right';
   ctx.fillStyle = "white";
-  ctx.fillText  (`HP: ${player.hp}`, 355, 15);
+  ctx.fillText  (`HP: ${player.hp}`, 355, 20);
   ctx.restore();
 }
 
 const renderScore = () => {
   ctx.save();
+  ctx.font = '16px kong'
   ctx.textBaseline = 'middle';
   ctx.fillStyle = "white";
   ctx.textAlign = 'left';

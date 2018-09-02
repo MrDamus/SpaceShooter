@@ -5,20 +5,18 @@ class Player {
     this.hp = hp;
     this.bullet = bullet;
     this.canvas = document.getElementById("canvas");
-
     this.img = new Image();
     this.img.src = imgSrc || '../assets/img/ship.png';
-
-    this.width= 31,
-    this.height= 20,
-    this.engineOn= false
+    this.width = 20,
+    this.height = 20,
+    this.engineOn = false
   }
 
   draw()
 {
     ctx.save();
     ctx.translate(-15, 0)
-    ctx.drawImage(this.img, x, y, this.width, this.height);
+    ctx.drawImage(this.img, x, y, this.width + 11, this.height);
 
     if(this.engineOn)
     {
@@ -55,7 +53,7 @@ class Player {
     const { bullet } = this;
     let newBullet = new Bullet({x: player.x, y: player.y, owner: this, ...bullet});
     shootThrottled(newBullet)
-    // SOUNDS.pew.play();
+    SOUNDS.pew.play();
   }
 }
 

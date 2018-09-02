@@ -27,7 +27,13 @@ function start() {
 
 function StartGame () {
     document.getElementById('startScreen').style.display = "none";
-    player.hp = startingHP; 
+    player.hp = startingHP;
+    x = width/2,
+    y = height*.8,
+    player.x = width/2,
+    player.y = height*.8,
+    velY = 0,
+    velX = 0,
     score = 0;
     enemies.forEach(enemy => {
         enemy.remove();
