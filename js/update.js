@@ -42,7 +42,6 @@ function detectBulletCollisions() {
                                             bullet.x <= player.x + player.width
 
             if (enemyBulletInPlayerArea) {
-                console.log('You have been hit by enemy bullet!')
                 player.applyDamage(enemyDamage)
                 bullets = bullets.filter(b => b != bullet)
 
