@@ -43,8 +43,3 @@ document.addEventListener('keydown', (e) => {
     }
   }
 });
-
-document.body.addEventListener("keydown", (e) => {
-  keys[e.keyCode] = true;
-  player.engineOn = true;
-});

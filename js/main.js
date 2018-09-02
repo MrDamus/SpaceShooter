@@ -45,11 +45,13 @@ function StartGame () {
 }
 
 document.body.addEventListener("keydown", (e) => {
-    keys[e.keyCode] = true;
+  keys[e.keyCode] = true;
+  if (arrowsKeyCodes.includes(e.keyCode) || wsadKeyCodes.includes(e.keyCode)) {
     player.engineOn = true;
+  }
 });
 
 document.body.addEventListener("keyup", (e) => {
-    keys[e.keyCode] = false;
-    player.engineOn = false;
+  keys[e.keyCode] = false;
+  player.engineOn = false;
 });

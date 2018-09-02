@@ -9,6 +9,9 @@ let gameInProgress = true;
 let score = 0;
 let enemiesInterval;
 
+const arrowsKeyCodes = [38, 40, 39, 37];
+const wsadKeyCodes = [87, 83, 68, 65];
+
 const scoreWrapper = document.getElementById("score");
 scoreWrapper.innerHTML = "Score: " + score;
 

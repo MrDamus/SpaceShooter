@@ -10,7 +10,7 @@ class Enemy {
       this.spawnNewBullet();
     }, spawnEnemyBulletInterval - score)
     this.avatar = new Image();
-    this.avatar.src = avatarSrc || '../assets/img/blueE.png';
+    this.avatar.src = avatarSrc;
     this.avatarWidth = 20;
     this.avatarHeight = 20;
     this.velX = getRandomArbitrary(-velX, velY * 99/100);
