@@ -12,7 +12,7 @@ let score = 0;
 let enemiesInterval;
 
 const boom = new Image();
-boom.src = '/assets/img/boom.png';
+boom.src = 'assets/img/boom.png';
 
 const arrowsKeyCodes = [38, 40, 39, 37];
 const wsadKeyCodes = [87, 83, 68, 65];
