@@ -6,6 +6,9 @@
 body {
   color: white;
   font-family: kong;
+  margin: 0px;
+  min-height: 100%;
+  overflow: hidden;
 }
 
 #canvas {
@@ -16,11 +19,9 @@ body {
 
 #startScreen {
   position: absolute;
-  top:8px;
-  left:8px;
   background-color: rgba(200, 200, 200, 0.3);
-  height: 400px;
-  width: 360px;
+  width: 100vw;
+  height: 100vh;
   text-align: center;
 }
 
@@ -39,9 +40,10 @@ body {
 #nextLvl {
   display: none;
   position: absolute;
-  top: 16%;
-  left: 8px;
-  width: 360px;
+  top: 30%;
+  right: 0;
+  left: 0;
+  margin: auto; 
 }
 
 #nextLvl h2 {
@@ -50,11 +52,9 @@ body {
 
 #over {
   position: absolute;
-  top:8px;
-  left:8px;
   background-color: rgba(0, 0, 0, 0.4);
-  height: 400px;
-  width: 360px;
+  width: 100vw;
+  height: 100vh;
   text-align: center;
 }
 
