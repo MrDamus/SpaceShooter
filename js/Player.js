@@ -56,5 +56,5 @@ class Player {
   }
 }
 
-player = new Player(0, 0, startingHP, '/assets/img/ship.png')
+player = new Player(0, 0, startingHP, 'assets/img/ship.png')
 
