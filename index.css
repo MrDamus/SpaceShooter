@@ -1,6 +1,6 @@
 @font-face { 
   font-family: kong;
-  src: url('/font/kong.ttf');
+  src: url('font/kong.ttf');
 }
 
 body {
