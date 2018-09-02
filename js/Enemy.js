@@ -35,6 +35,7 @@ class Enemy {
   }
 
   explode() {
+    clearInterval(this.interval);
     this.isDestroyed = true;
     this.avatar = boom;
     setTimeout(() => {
