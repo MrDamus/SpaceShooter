@@ -1,5 +1,5 @@
 class Player {
-  constructor(x, y, hp, bullet = BULLETS.DEFAULT_PLAYER, imgSrc) {
+  constructor(x, y, hp, imgSrc, bullet = BULLETS.DEFAULT_PLAYER) {
     this.x = x;
     this.y = y;
     this.hp = hp;
