@@ -40,10 +40,6 @@ let x = width/2,
     gunDamage = 1;
     enemyDamage = 1;
 
-const SOUNDS = {
-    pew: document.getElementById('sound_pew'),
-}
-
 const BULLETS = {
     DEFAULT_ENEMY:  { radiusX: 3, radiusY: 3, offset: 20, speed:-8, damage: 1, color: 'blue' },
     GREEN_ENEMY:    { radiusX: 2, radiusY: 4, offset: 20, speed:-8, damage: 1, color: 'green' },

@@ -53,7 +53,6 @@ class Player {
     const { bullet } = this;
     let newBullet = new Bullet({x: player.x, y: player.y, owner: this, ...bullet});
     shootThrottled(newBullet)
-    SOUNDS.pew.play();
   }
 }
 
