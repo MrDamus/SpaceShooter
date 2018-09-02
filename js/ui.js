@@ -1,8 +1,5 @@
-const kongFont = '15px kong'
-
 const renderPlayerHP = () => {
   ctx.save();
-  ctx.font = kongFont;
   ctx.textAlign = 'right';
   ctx.fillStyle = "white";
   ctx.fillText  (`HP: ${player.hp}`, 355, 15);
@@ -11,7 +8,6 @@ const renderPlayerHP = () => {
 
 const renderScore = () => {
   ctx.save();
-  ctx.font = kongFont;
   ctx.textBaseline = 'middle';
   ctx.fillStyle = "white";
   ctx.textAlign = 'left';
@@ -23,8 +19,6 @@ renderUI = () => {
   renderPlayerHP();
   renderScore();
 }
-
-document.fonts.load('10pt "kong"')
 
 const startScreen = document.getElementById('startScreen');
 const over = document.getElementById('over');
